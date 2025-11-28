@@ -13,19 +13,15 @@
             font-family: 'Cairo', sans-serif;
             margin: 0;
             padding: 0;
-            /* تغيير بسيط في gradient لجعلها mobile-friendly */
             background: linear-gradient(135deg, #ffc0cb 0%, #ff69b4 100%);
             display: flex;
             justify-content: center;
-            /* تم تغيير من flex-start إلى center لضمان توسيط المحتوى رأسيًا وأفقيًا في شاشات الجوال */
+            /* توسيط رأسي للمحتوى في شاشة القفل */
             align-items: center; 
             min-height: 100vh;
             overflow-x: hidden;
             color: #333;
             perspective: 1000px;
-            /* إضافة لضمان التمرير على الجوال إذا لزم الأمر */
-            padding-top: 20px; 
-            padding-bottom: 20px;
             box-sizing: border-box;
         }
 
@@ -33,7 +29,7 @@
         .scene {
             width: 100%;
             max-width: 450px; /* الحجم الأمثل للجوال */
-            padding: 0 15px; /* تقليل padding الأفقي قليلاً */
+            padding: 0 15px; 
             box-sizing: border-box;
             text-align: center;
             position: relative;
@@ -78,12 +74,9 @@
         /* الشاشات */
         .screen {
             display: none;
-            /* تم تقليل الـ padding-top قليلاً ليتناسب مع الجوال */
-            padding-top: 30px; 
+            padding-top: 30px;
             animation: slideInFromTop 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
             opacity: 0;
-            /* إزالة الـ min-height للسماح للمحتوى بتحديد ارتفاع الشاشة */
-            /* min-height: 80vh; */ 
         }
         .screen.active {
             display: block;
@@ -102,6 +95,125 @@
             font-weight: 900;
         }
 
+        /* ------------------------------------------- */
+        /* أنماط شاشة القفل لتطابق الصورة المرفقة */
+        /* ------------------------------------------- */
+        .lock-screen {
+            /* إزالة الـ padding-top العالي للسماح بالتوسيط الرأسي بالـ body */
+            padding-top: 0; 
+            padding-bottom: 0;
+            /* يجب أن يكون ارتفاع الشاشة القفل مساويًا لارتفاع الـ viewport */
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+        }
+
+        /* أيقونة القفل - تم تكبيرها وجعلها في المنتصف */
+        .lock-screen .lock-icon { 
+            font-size: 70px; /* أكبر ليطابق الصورة */
+            color: #fff; 
+            text-shadow: 0 0 15px #f72c7b; 
+            margin-bottom: 10px;
+        }
+
+        /* نص "Enter Password Unlock" */
+        .lock-screen h2 { 
+            margin-bottom: 30px; 
+            font-size: 28px; 
+            font-weight: 700;
+            color: white;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 105, 180, 0.9);
+            letter-spacing: 1px;
+            line-height: 1.3;
+        }
+        
+        /* حقل الإدخال */
+        .lock-screen .password-input {
+            width: 90%;
+            max-width: 300px; /* لتقريبها من حجم الشاشة في الصورة */
+            padding: 18px 20px;
+            margin-bottom: 40px; /* مسافة أكبر قبل الزر */
+            border: none; /* إزالة الحدود */
+            border-radius: 50px;
+            text-align: center;
+            font-size: 20px;
+            letter-spacing: 2px;
+            color: #333;
+            outline: none;
+            background: white; /* خلفية بيضاء صلبة */
+            box-shadow: 0 0 15px rgba(255, 105, 180, 0.3); /* ظل خفيف حول الحقل */
+            transition: all 0.3s;
+        }
+        .lock-screen .password-input:focus {
+            box-shadow: 0 0 20px rgba(255, 105, 180, 1);
+        }
+        
+        /* زر الدخول */
+        .button {
+            display: inline-block;
+            /* تقليل الـ padding ليناسب شكل الزر في الصورة */
+            padding: 15px 60px; 
+            background-color: #ff4d94;
+            color: white;
+            border: none;
+            border-radius: 40px;
+            font-size: 22px;
+            cursor: pointer;
+            transition: all 0.1s ease;
+            /* ظل الزر ليطابق الصورة المرفقة */
+            box-shadow: 0 6px #d93a7d, 0 10px 20px rgba(255, 77, 148, 0.6); 
+            font-weight: 700;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
+            min-width: 200px;
+        }
+        .button:active {
+            box-shadow: 0 2px #d93a7d, 0 5px 15px rgba(255, 77, 148, 0.5);
+            transform: translateY(4px);
+        }
+        .start-journey-button {
+            /* إعادة الأنماط الأصلية للأزرار الداخلية */
+            padding: 18px 40px; 
+            min-width: 180px;
+        }
+
+        #error-message {
+            color: #ffc0cb;
+            margin-top: 15px;
+            font-weight: bold;
+            text-shadow: 0 0 5px red;
+            display: none;
+            animation: shake 0.5s;
+        }
+        @keyframes shake {
+            0%, 100% { transform: translateX(0); }
+            20%, 60% { transform: translateX(-10px); }
+            40%, 80% { transform: translateX(10px); }
+        }
+        /* ------------------------------------------- */
+        /* نهاية أنماط شاشة القفل المحدثة */
+        /* ------------------------------------------- */
+
+        /* أنماط شاشة الترحيب */
+        .welcome-screen {
+            padding-top: 50px;
+            padding-bottom: 50px;
+        }
+        .welcome-screen h1 { margin-bottom: 25px; font-size: 38px; }
+        .welcome-screen p {
+            color: #555;
+            line-height: 2;
+            font-size: 17px;
+            font-weight: 500;
+        }
+        .welcome-screen .next-step-text {
+            font-weight: bold;
+            color: #f72c7b;
+            margin-top: 20px;
+        }
+
         /* كرت الذاكرة */
         .memory-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
@@ -117,30 +229,7 @@
             opacity: 0;
             transform: translateY(50px);
             position: relative;
-            /* ارتفاع ثابت لتوحيد الحجم في الجوال */
             height: 280px; 
-        }
-
-        .memory-card::before {
-            content: "💖";
-            position: absolute;
-            top: 12px;
-            left: 12px;
-            font-size: 20px;
-            opacity: 0.2;
-            animation: pulse 4s infinite alternate;
-            z-index: 2;
-        }
-
-        .memory-card::after {
-            content: "✨";
-            position: absolute;
-            bottom: 12px;
-            right: 12px;
-            font-size: 18px;
-            opacity: 0.15;
-            animation: pulse 5s infinite alternate-reverse;
-            z-index: 2;
         }
 
         .memory-card:hover {
@@ -177,90 +266,8 @@
             backdrop-filter: blur(4px);
         }
 
-        /* أنماط شاشة القفل */
-        .lock-screen {
-            /* تعديل لارتفاع مناسب لشاشة الجوال */
-            padding-top: 10vh; 
-            padding-bottom: 10vh;
-        }
-        .lock-screen h2 { margin-bottom: 30px; font-size: 28px; }
-        .lock-screen .password-input {
-            width: 80%;
-            max-width: 300px; /* تحديد عرض أقصى لضمان الشكل الجيد */
-            padding: 15px;
-            margin-bottom: 25px;
-            border: 3px solid #ff4d94;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 22px;
-            letter-spacing: 5px;
-            color: #333;
-            outline: none;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
-            transition: all 0.3s;
-        }
-        .lock-screen .password-input:focus {
-            border-color: #f72c7b;
-            box-shadow: 0 0 20px rgba(255, 105, 180, 1);
-        }
-        .lock-screen .lock-icon { font-size: 60px; color: #fff; text-shadow: 0 0 10px #f72c7b; }
-
-        /* نمط الأزرار */
-        .button {
-            display: inline-block;
-            padding: 18px 40px;
-            background-color: #ff4d94;
-            color: white;
-            border: none;
-            border-radius: 40px;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.1s ease;
-            box-shadow: 0 8px #d93a7d, 0 15px 30px rgba(255, 77, 148, 0.8);
-            font-weight: 700;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-            min-width: 180px;
-        }
-        .button:active {
-            box-shadow: 0 3px #d93a7d, 0 5px 15px rgba(255, 77, 148, 0.7);
-            transform: translateY(5px);
-        }
-        .start-journey-button {
-            font-family: 'Arial', sans-serif;
-            letter-spacing: 1px;
-        }
-
-        #error-message {
-            color: #ffc0cb;
-            margin-top: 15px;
-            font-weight: bold;
-            text-shadow: 0 0 5px red;
-            display: none;
-            animation: shake 0.5s;
-        }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-10px); }
-            40%, 80% { transform: translateX(10px); }
-        }
-
-        /* أنماط شاشة الترحيب */
-        .welcome-screen h1 { margin-bottom: 25px; font-size: 38px; }
-        .welcome-screen p {
-            color: #555;
-            line-height: 2;
-            font-size: 17px;
-            font-weight: 500;
-        }
-        .welcome-screen .next-step-text {
-            font-weight: bold;
-            color: #f72c7b;
-            margin-top: 20px;
-        }
-
         /* أنماط شاشة الذكريات */
-        .memories-screen { padding-top: 30px; }
+        .memories-screen { padding-top: 30px; padding-bottom: 50px; }
         .memories-screen h1 { margin-bottom: 30px; font-size: 40px; }
 
         .secret-message-text {
@@ -272,6 +279,7 @@
         }
 
         /* أنماط الشاشة النهائية */
+        .final-screen { padding-top: 50px; padding-bottom: 50px; }
         .final-screen h1 { font-size: 45px; margin-bottom: 5px; }
         .final-screen .sub-title {
             color: #fff;
@@ -336,7 +344,7 @@
 
 <div class="scene">
     <div id="lock-screen" class="screen active lock-screen">
-        <span class="lock-icon">🔒</span>
+        <span class="lock-icon" style="color: #ffc0cb;">🔐</span>
         <h2 style="font-family: Arial, sans-serif;">Enter Password<br>Unlock</h2>
         <input type="password" id="password-input" class="password-input" placeholder="Password" maxlength="6">
         <button class="button" onclick="checkPassword()">دخول ❤</button>
@@ -365,7 +373,7 @@
 
         <div class="memory-card" style="animation-delay: 0.1s;">
             <img src="https://i.postimg.cc/WpdTJFC5/maxresdefault.jpg" alt="Memory 1">
-            <p class="caption">الاغنيه اللي بنحبها 💖</p>
+            <p class="caption">الأغنية اللي بنحبها 💖</p>
         </div>
 
         <div class="memory-card" style="animation-delay: 0.2s;">
@@ -399,7 +407,7 @@
         </div>
 
         <div class="secret-message-text">✨ في حاجه مهمه عايز اقولهالك ✨</div>
-        <button class="button" onclick="showFinalScreen()">💗 دوسي هنا يروحي 💗</button>
+        <button class="button start-journey-button" onclick="showFinalScreen()">💗 دوسي هنا يروحي 💗</button>
         <div style="height: 50px;"></div>
     </div>
 
@@ -427,7 +435,6 @@
 
     function tryPlayMusic() {
         if (!musicPlayed) {
-            // استخدام التفاعل المباشر للتشغيل التلقائي
             music.play().then(() => {
                 musicPlayed = true;
             }).catch(e => {
@@ -445,8 +452,15 @@
         screens.forEach(screen => screen.classList.remove('active'));
         const target = document.getElementById(screenId);
         target.classList.add('active');
-        // تأكد من الانتقال لأعلى الصفحة على الجوال
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        
+        // إعادة التوسيط الرأسي للجسم إذا كانت الشاشة ليست شاشة القفل
+        if (screenId !== 'lock-screen') {
+            document.body.style.alignItems = 'flex-start';
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        } else {
+            document.body.style.alignItems = 'center';
+        }
+
 
         if (screenId === 'memories-screen') {
             document.querySelectorAll('.memory-card').forEach((card, i) => {
