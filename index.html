@@ -23,6 +23,7 @@
             color: #333;
             perspective: 1000px;
             box-sizing: border-box;
+            transition: align-items 0.5s ease-in-out; /* إضافة انتقال سلس */
         }
 
         /* حاوية المشاهد - تثبيت العرض الأقصى لشاشات الجوال */
@@ -99,9 +100,6 @@
         /* أنماط شاشة القفل لتطابق الصورة المرفقة */
         /* ------------------------------------------- */
         .lock-screen {
-            /* إزالة الـ padding-top العالي للسماح بالتوسيط الرأسي بالـ body */
-            padding-top: 0; 
-            padding-bottom: 0;
             /* يجب أن يكون ارتفاع الشاشة القفل مساويًا لارتفاع الـ viewport */
             min-height: 100vh;
             display: flex;
@@ -450,70 +448,4 @@
 
     function showScreen(screenId) {
         screens.forEach(screen => screen.classList.remove('active'));
-        const target = document.getElementById(screenId);
-        target.classList.add('active');
-        
-        // إعادة التوسيط الرأسي للجسم إذا كانت الشاشة ليست شاشة القفل
-        if (screenId !== 'lock-screen') {
-            document.body.style.alignItems = 'flex-start';
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-        } else {
-            document.body.style.alignItems = 'center';
-        }
-
-
-        if (screenId === 'memories-screen') {
-            document.querySelectorAll('.memory-card').forEach((card, i) => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(50px)';
-                void card.offsetWidth;
-                card.style.animation = `floatUp 0.8s ${0.1 * (i + 1)}s forwards`;
-            });
-            tryPlayMusic();
-        } else if (screenId === 'final-screen' || screenId === 'lock-screen') {
-            stopMusic();
-        } else if (screenId === 'welcome-screen') {
-            tryPlayMusic();
-        }
-    }
-
-    function checkPassword() {
-        const input = document.getElementById('password-input').value.trim();
-        const error = document.getElementById('error-message');
-        if (input === CORRECT_PASSWORD) {
-            error.style.display = 'none';
-            document.getElementById('password-input').value = '';
-            showScreen('welcome-screen');
-        } else {
-            error.style.display = 'block';
-        }
-    }
-
-    function showMemoriesScreen() {
-        showScreen('memories-screen');
-    }
-
-    function showFinalScreen() {
-        stopMusic();
-        showScreen('final-screen');
-    }
-
-    function restartApp() {
-        stopMusic();
-        showScreen('lock-screen');
-    }
-
-    document.addEventListener('DOMContentLoaded', () => {
-        showScreen('lock-screen');
-        document.getElementById('password-input').addEventListener('keypress', e => {
-            if (e.key === 'Enter') checkPassword();
-        });
-
-        // تفعيل الموسيقى عند أول نقر (ضروري على الجوال)
-        document.body.addEventListener('click', tryPlayMusic, { once: true });
-        document.getElementById('password-input').addEventListener('focus', tryPlayMusic, { once: true });
-    });
-</script>
-
-</body>
-</html>
+        const target = document.getElementById(screen
