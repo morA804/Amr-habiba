@@ -2,7 +2,7 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name=" viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>حبيبة حياتي 💖</title>
     <style>
         /* الخطوط */
@@ -13,21 +13,27 @@
             font-family: 'Cairo', sans-serif;
             margin: 0;
             padding: 0;
+            /* تغيير بسيط في gradient لجعلها mobile-friendly */
             background: linear-gradient(135deg, #ffc0cb 0%, #ff69b4 100%);
             display: flex;
             justify-content: center;
-            align-items: flex-start;
+            /* تم تغيير من flex-start إلى center لضمان توسيط المحتوى رأسيًا وأفقيًا في شاشات الجوال */
+            align-items: center; 
             min-height: 100vh;
             overflow-x: hidden;
             color: #333;
             perspective: 1000px;
+            /* إضافة لضمان التمرير على الجوال إذا لزم الأمر */
+            padding-top: 20px; 
+            padding-bottom: 20px;
+            box-sizing: border-box;
         }
 
-        /* حاوية المشاهد */
+        /* حاوية المشاهد - تثبيت العرض الأقصى لشاشات الجوال */
         .scene {
             width: 100%;
-            max-width: 450px;
-            padding: 20px 15px;
+            max-width: 450px; /* الحجم الأمثل للجوال */
+            padding: 0 15px; /* تقليل padding الأفقي قليلاً */
             box-sizing: border-box;
             text-align: center;
             position: relative;
@@ -72,10 +78,12 @@
         /* الشاشات */
         .screen {
             display: none;
-            padding-top: 50px;
+            /* تم تقليل الـ padding-top قليلاً ليتناسب مع الجوال */
+            padding-top: 30px; 
             animation: slideInFromTop 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
             opacity: 0;
-            min-height: 80vh;
+            /* إزالة الـ min-height للسماح للمحتوى بتحديد ارتفاع الشاشة */
+            /* min-height: 80vh; */ 
         }
         .screen.active {
             display: block;
@@ -94,7 +102,7 @@
             font-weight: 900;
         }
 
-        /* كرت الذاكرة – الآن الصورة تملأ الغلاف بالكامل */
+        /* كرت الذاكرة */
         .memory-card {
             background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
             backdrop-filter: blur(10px);
@@ -109,7 +117,8 @@
             opacity: 0;
             transform: translateY(50px);
             position: relative;
-            height: 280px; /* ارتفاع ثابت لتوحيد الحجم */
+            /* ارتفاع ثابت لتوحيد الحجم في الجوال */
+            height: 280px; 
         }
 
         .memory-card::before {
@@ -146,7 +155,7 @@
         .memory-card img {
             width: 100%;
             height: 100%;
-            object-fit: cover; /* ← هذا يجعل الصورة تملأ الغلاف بالكامل مع الحفاظ على النسبة */
+            object-fit: cover; 
             display: block;
             border-radius: 22px;
             filter: brightness(1.05);
@@ -168,13 +177,16 @@
             backdrop-filter: blur(4px);
         }
 
-        /* باقي الأنماط */
+        /* أنماط شاشة القفل */
         .lock-screen {
-            padding-top: 15vh;
+            /* تعديل لارتفاع مناسب لشاشة الجوال */
+            padding-top: 10vh; 
+            padding-bottom: 10vh;
         }
         .lock-screen h2 { margin-bottom: 30px; font-size: 28px; }
         .lock-screen .password-input {
             width: 80%;
+            max-width: 300px; /* تحديد عرض أقصى لضمان الشكل الجيد */
             padding: 15px;
             margin-bottom: 25px;
             border: 3px solid #ff4d94;
@@ -194,6 +206,7 @@
         }
         .lock-screen .lock-icon { font-size: 60px; color: #fff; text-shadow: 0 0 10px #f72c7b; }
 
+        /* نمط الأزرار */
         .button {
             display: inline-block;
             padding: 18px 40px;
@@ -232,6 +245,7 @@
             40%, 80% { transform: translateX(10px); }
         }
 
+        /* أنماط شاشة الترحيب */
         .welcome-screen h1 { margin-bottom: 25px; font-size: 38px; }
         .welcome-screen p {
             color: #555;
@@ -245,6 +259,7 @@
             margin-top: 20px;
         }
 
+        /* أنماط شاشة الذكريات */
         .memories-screen { padding-top: 30px; }
         .memories-screen h1 { margin-bottom: 30px; font-size: 40px; }
 
@@ -256,6 +271,7 @@
             text-shadow: 0 0 10px #fff, 0 0 20px #ff4d94;
         }
 
+        /* أنماط الشاشة النهائية */
         .final-screen h1 { font-size: 45px; margin-bottom: 5px; }
         .final-screen .sub-title {
             color: #fff;
@@ -305,7 +321,6 @@
 </head>
 <body>
 
-<!-- موسيقى رومانسية ناعمة (رابط مباشر ويعمل فور التفاعل) -->
 <audio id="background-music" loop>
     <source src="https://www.soundjay.com/misc/sounds/romantic-piano-1.mp3" type="audio/mpeg">
     المتصفح لا يدعم تشغيل ملفات الصوت.
@@ -350,7 +365,7 @@
 
         <div class="memory-card" style="animation-delay: 0.1s;">
             <img src="https://i.postimg.cc/WpdTJFC5/maxresdefault.jpg" alt="Memory 1">
-            <p class="caption">الاغنيه اللي بحبها 💖</p>
+            <p class="caption">الاغنيه اللي بنحبها 💖</p>
         </div>
 
         <div class="memory-card" style="animation-delay: 0.2s;">
@@ -412,6 +427,7 @@
 
     function tryPlayMusic() {
         if (!musicPlayed) {
+            // استخدام التفاعل المباشر للتشغيل التلقائي
             music.play().then(() => {
                 musicPlayed = true;
             }).catch(e => {
@@ -429,6 +445,7 @@
         screens.forEach(screen => screen.classList.remove('active'));
         const target = document.getElementById(screenId);
         target.classList.add('active');
+        // تأكد من الانتقال لأعلى الصفحة على الجوال
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
         if (screenId === 'memories-screen') {
@@ -441,6 +458,8 @@
             tryPlayMusic();
         } else if (screenId === 'final-screen' || screenId === 'lock-screen') {
             stopMusic();
+        } else if (screenId === 'welcome-screen') {
+            tryPlayMusic();
         }
     }
 
@@ -476,8 +495,9 @@
             if (e.key === 'Enter') checkPassword();
         });
 
-        // تفعيل الموسيقى عند أول نقر
+        // تفعيل الموسيقى عند أول نقر (ضروري على الجوال)
         document.body.addEventListener('click', tryPlayMusic, { once: true });
+        document.getElementById('password-input').addEventListener('focus', tryPlayMusic, { once: true });
     });
 </script>
 
