@@ -2,499 +2,1524 @@
 <html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
-    <meta name=" viewport" content="width=device-width, initial-scale=1.0">
-    <title>حبيبة حياتي 💖</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mora Remove - V21 Gold</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;600;700;900&family=Montserrat:wght@300;400;600;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- FontAwesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Config -->
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        cairo: ['Cairo', 'sans-serif'],
+                        montserrat: ['Montserrat', 'sans-serif'],
+                    },
+                    colors: {
+                        primary: '#6366f1', 
+                        secondary: '#a855f7', 
+                        gold: '#fbbf24',    
+                        goldDark: '#b45309', 
+                        darkBase: '#020617',
+                        midnightBase: '#0f172a',
+                        lightBase: '#f8fafc',
+                    },
+                    animation: {
+                        'fade-in': 'fadeIn 0.6s ease-out',
+                        'slide-up': 'slideUp 0.5s ease-out',
+                        'pulse-slow': 'pulse 3s infinite',
+                        'shine': 'shine 3s linear infinite',
+                        'float': 'float 3s ease-in-out infinite',
+                        'pop-in': 'popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275)',
+                    },
+                    keyframes: {
+                        fadeIn: { '0%': { opacity: '0' }, '100%': { opacity: '1' } },
+                        slideUp: { '0%': { transform: 'translateY(20px)', opacity: '0' }, '100%': { transform: 'translateY(0)', opacity: '1' } },
+                        shine: { '0%': { backgroundPosition: '200% center' }, '100%': { backgroundPosition: '-200% center' } },
+                        float: { '0%, 100%': { transform: 'translateY(0)' }, '50%': { transform: 'translateY(-5px)' } },
+                        popIn: { '0%': { opacity: '0', transform: 'scale(0.8) translateY(10px)' }, '100%': { opacity: '1', transform: 'scale(1) translateY(0)' } }
+                    }
+                }
+            }
+        }
+    </script>
+
     <style>
-        /* الخطوط */
-        @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;700;900&display=swap');
+        /* Global Settings */
+        body { font-family: 'Cairo', sans-serif; overflow-x: hidden; -webkit-tap-highlight-color: transparent; transition: background-color 0.5s, color 0.5s; }
+        body.en-font { font-family: 'Montserrat', sans-serif; }
+        
+        /* Scrollbar */
+        .hide-scroll::-webkit-scrollbar { display: none; }
+        .hide-scroll { -ms-overflow-style: none; scrollbar-width: none; }
 
-        /* إعدادات الجسم العامة والخلفية المشعة */
-        body {
-            font-family: 'Cairo', sans-serif;
-            margin: 0;
-            padding: 0;
-            background: linear-gradient(135deg, #ffc0cb 0%, #ff69b4 100%);
-            display: flex;
-            justify-content: center;
-            /* **التعديل 1: لتقريب المحتوى أكثر** */
-            align-items: flex-start; 
-            min-height: 100vh;
-            overflow-x: hidden;
-            color: #333;
-            perspective: 1000px;
+        /* Glassmorphism */
+        .glass {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+        }
+        .glass-modal {
+            background: rgba(15, 23, 42, 0.98);
+            backdrop-filter: blur(24px);
+            border: 1px solid rgba(251, 191, 36, 0.2);
         }
 
-        /* حاوية المشاهد */
-        .scene {
-            width: 100%;
-            max-width: 450px;
-            padding: 20px 15px;
-            box-sizing: border-box;
-            text-align: center;
-            position: relative;
-            z-index: 10;
-            padding-top: 50px; 
-            padding-bottom: 50px; 
-        }
-
-        /* قلوب 3D في الخلفية */
-        .heart-3d-bg {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            pointer-events: none;
-            overflow: hidden;
-            z-index: 1;
-        }
-
-        .heart-3d {
-            position: absolute;
-            color: rgba(255, 255, 255, 0.5);
-            font-size: 30px;
-            transform: rotateX(60deg) rotateY(0deg);
-            text-shadow: 0 0 10px rgba(255, 192, 203, 0.8);
-            animation: float-3d 15s infinite ease-in-out, pulse 3s infinite alternate;
-        }
-
-        @keyframes float-3d {
-            0% { top: 100%; left: 10%; transform: translateZ(0) rotateX(0deg) rotateY(0deg); }
-            50% { top: 0%; left: 90%; transform: translateZ(100px) rotateX(180deg) rotateY(90deg); }
-            100% { top: -20%; left: 30%; transform: translateZ(0) rotateX(360deg) rotateY(180deg); }
-        }
-        @keyframes pulse {
-            to { opacity: 0.8; transform: scale(1.2); }
-        }
-
-        .heart-3d:nth-child(2) { left: 40%; top: 80%; font-size: 40px; animation-delay: 3s; }
-        .heart-3d:nth-child(3) { left: 70%; top: 60%; font-size: 25px; animation-delay: 6s; }
-        .heart-3d:nth-child(4) { left: 20%; top: 40%; font-size: 35px; animation-delay: 9s; }
-        .heart-3d:nth-child(5) { left: 85%; top: 20%; font-size: 50px; animation-delay: 12s; }
-
-        /* الشاشات */
-        .screen {
-            display: none;
-            animation: slideInFromTop 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-            opacity: 0;
-            /* **التعديل 2: تم تقليل الارتفاع الأدنى لتقليل التمرير** */
-            min-height: 70vh; 
-            padding-top: 0; /* تم إزالة الـ padding الزائد */
-        }
-        .screen.active {
-            display: block;
-            opacity: 1;
+        /* 3D GOLD SPLASH TEXT */
+        .text-gold-3d {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(to bottom, #fff 0%, #fbbf24 40%, #b45309 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            filter: drop-shadow(0 4px 0 #78350f) drop-shadow(0 8px 10px rgba(0,0,0,0.5));
+            transform: perspective(500px) rotateX(5deg);
+            letter-spacing: -1px;
+            display: inline-block;
         }
         
-        @keyframes slideInFromTop {
-            0% { transform: translateY(-100px); opacity: 0; }
-            100% { transform: translateY(0); opacity: 1; }
+        /* Shape Items */
+        .shape-item {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+        }
+        .shape-item:active { transform: scale(0.95); }
+        .shape-item.active { 
+            border: 2px solid #fbbf24; 
+            transform: scale(1.15);
+            z-index: 10;
+            box-shadow: 0 0 25px rgba(251, 191, 36, 0.6);
         }
 
-        /* العناصر المشتركة */
-        h1, h2 {
-            color: #fff;
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 25px rgba(255, 105, 180, 0.9);
-            font-weight: 900;
+        /* Transparency Grid */
+        .transparency-bg {
+            background-color: #f0f0f0;
+            background-image: linear-gradient(45deg, #ddd 25%, transparent 25%), linear-gradient(-45deg, #ddd 25%, transparent 25%), linear-gradient(45deg, transparent 75%, #ddd 75%), linear-gradient(-45deg, transparent 75%, #ddd 75%);
+            background-size: 20px 20px;
+            background-position: 0 0, 0 10px, 10px -10px, -10px 0px;
         }
 
-        /* كرت الذاكرة – الآن الصورة تملأ الغلاف بالكامل */
-        .memory-card {
-            background: linear-gradient(135deg, rgba(255, 255, 255, 0.2) 0%, rgba(255, 255, 255, 0.05) 100%);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 105, 180, 0.4);
-            border-radius: 24px;
-            padding: 0;
-            margin-bottom: 20px; /* **التعديل 3: تقليل الهامش بين البطاقات** */
-            box-shadow: 0 8px 25px rgba(255, 105, 180, 0.3);
+        /* Custom Range Slider */
+        input[type=range] {
+            -webkit-appearance: none; width: 100%; background: transparent;
+        }
+        input[type=range]::-webkit-slider-thumb {
+            -webkit-appearance: none; height: 16px; width: 16px; border-radius: 50%; background: #fbbf24; cursor: pointer; margin-top: -6px; box-shadow: 0 0 10px rgba(251,191,36,0.5);
+        }
+        input[type=range]::-webkit-slider-runnable-track {
+            width: 100%; height: 4px; cursor: pointer; background: rgba(255,255,255,0.2); border-radius: 2px;
+        }
+
+        /* Image Interaction */
+        #preview-container {
+            touch-action: none;
             overflow: hidden;
-            transition: transform 0.4s ease, box-shadow 0.4s ease;
-            animation: floatUp 0.8s forwards;
-            opacity: 0;
-            transform: translateY(50px);
+            cursor: grab;
             position: relative;
-            height: 250px; /* **التعديل 4: تقليل ارتفاع البطاقة** */
         }
-
-        .memory-card::before {
-            content: "💖";
+        #preview-container:active { cursor: grabbing; }
+        
+        /* Before/After Slider */
+        .comparison-slider {
             position: absolute;
-            top: 12px;
-            left: 12px;
-            font-size: 20px;
-            opacity: 0.2;
-            animation: pulse 4s infinite alternate;
-            z-index: 2;
+            top: 0; left: 0; bottom: 0;
+            width: 50%;
+            overflow: hidden;
+            border-right: 2px solid #fbbf24;
+            transition: width 0.1s;
+            z-index: 20;
+            background: rgba(0,0,0,0.1);
         }
-
-        .memory-card::after {
-            content: "✨";
+        .comparison-handle {
             position: absolute;
-            bottom: 12px;
-            right: 12px;
-            font-size: 18px;
-            opacity: 0.15;
-            animation: pulse 5s infinite alternate-reverse;
-            z-index: 2;
+            top: 50%; right: -15px;
+            width: 30px; height: 30px;
+            background: #fbbf24;
+            border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            transform: translateY(-50%);
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+            z-index: 21;
+            cursor: ew-resize;
         }
 
-        .memory-card:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 12px 35px rgba(255, 105, 180, 0.5);
-        }
+        /* THEMES */
+        .theme-dark { background-color: #020617; color: #fff; }
+        .theme-midnight { background-color: #0f172a; color: #e2e8f0; }
+        .theme-light { background-color: #f8fafc; color: #1e293b; }
+        .theme-light .glass { background: rgba(0,0,0,0.05); border-color: rgba(0,0,0,0.1); }
+        .theme-light header { background: rgba(255,255,255,0.8); }
 
-        @keyframes floatUp {
-            to { opacity: 1; transform: translateY(0); }
+        /* Toast */
+        .toast {
+            visibility: hidden; min-width: 250px; background-color: rgba(15, 23, 42, 0.95); color: #fff; text-align: center; border-radius: 50px; padding: 14px 20px; position: fixed; z-index: 200; left: 50%; bottom: 40px; transform: translateX(-50%); border: 1px solid #fbbf24; box-shadow: 0 10px 30px rgba(0,0,0,0.6); font-weight: bold; display: flex; align-items: center; justify-content: center; gap: 10px; opacity: 0; transition: opacity 0.3s;
         }
+        .toast.show { visibility: visible; opacity: 1; animation: popIn 0.4s; }
 
-        .memory-card img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            border-radius: 22px;
-            filter: brightness(1.05);
-        }
-
-        .memory-card .caption {
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            right: 0;
-            background: rgba(0, 0, 0, 0.4);
-            color: white;
-            font-weight: 800;
-            font-size: 19px;
-            padding: 10px 0; /* **التعديل 5: تقليل حشوة (Padding) التسمية التوضيحية** */
-            margin: 0;
-            z-index: 3;
-            text-shadow: 0 0 6px #ff4d94;
-            backdrop-filter: blur(4px);
-        }
-
-        /* باقي الأنماط */
-        .lock-screen {
-            padding-top: 10vh; /* **التعديل 6: تقليل الـ Padding** */
-        }
-        .lock-screen h2 { margin-bottom: 30px; font-size: 28px; }
-        .lock-screen .password-input {
-            width: 80%;
-            padding: 15px;
-            margin-bottom: 25px;
-            border: 3px solid #ff4d94;
-            border-radius: 50px;
-            text-align: center;
-            font-size: 22px;
-            letter-spacing: 5px;
-            color: #333;
-            outline: none;
-            background: rgba(255, 255, 255, 0.95);
-            box-shadow: 0 0 10px rgba(255, 105, 180, 0.5);
-            transition: all 0.3s;
-        }
-        .lock-screen .password-input:focus {
-            border-color: #f72c7b;
-            box-shadow: 0 0 20px rgba(255, 105, 180, 1);
-        }
-        .lock-screen .lock-icon { font-size: 60px; color: #fff; text-shadow: 0 0 10px #f72c7b; }
-
-        .button {
-            display: inline-block;
-            padding: 18px 40px;
-            background-color: #ff4d94;
-            color: white;
-            border: none;
-            border-radius: 40px;
-            font-size: 20px;
-            cursor: pointer;
-            transition: all 0.1s ease;
-            box-shadow: 0 8px #d93a7d, 0 15px 30px rgba(255, 77, 148, 0.8);
-            font-weight: 700;
-            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3);
-            min-width: 180px;
-        }
-        .button:active {
-            box-shadow: 0 3px #d93a7d, 0 5px 15px rgba(255, 77, 148, 0.7);
-            transform: translateY(5px);
-        }
-        .start-journey-button {
-            font-family: 'Arial', sans-serif;
-            letter-spacing: 1px;
-        }
-
-        #error-message {
-            color: #ffc0cb;
-            margin-top: 15px;
-            font-weight: bold;
-            text-shadow: 0 0 5px red;
-            display: none;
-            animation: shake 0.5s;
-        }
-        @keyframes shake {
-            0%, 100% { transform: translateX(0); }
-            20%, 60% { transform: translateX(-10px); }
-            40%, 80% { transform: translateX(10px); }
-        }
-
-        .welcome-screen { 
-            padding-top: 30px; 
-            min-height: auto; /* **التعديل 7: إزالة الارتفاع الأدنى من شاشة الترحيب لضمان ملاءمتها** */
-        }
-        .welcome-screen h1 { margin-bottom: 15px; font-size: 38px; } /* **التعديل 8: تقليل الهامش** */
-        .welcome-screen p {
-            color: #555;
-            line-height: 1.8; /* **التعديل 9: تقليل التباعد بين السطور** */
-            font-size: 17px;
-            font-weight: 500;
-        }
-        .welcome-screen .next-step-text {
-            font-weight: bold;
-            color: #f72c7b;
-            margin-top: 15px; /* **التعديل 10: تقليل الهامش** */
-        }
-        .welcome-screen .text-content {
-            padding: 20px 15px; /* **التعديل 11: تقليل حشوة (Padding) المحتوى النصي** */
-        }
-
-        .memories-screen { padding-top: 20px; } /* **التعديل 12: تقليل الـ Padding** */
-        .memories-screen h1 { margin-bottom: 20px; font-size: 40px; }
-
-        .secret-message-text {
-            font-size: 22px;
-            font-weight: bold;
-            color: #fff;
-            margin: 30px 0 20px; /* **التعديل 13: تقليل الهامش** */
-            text-shadow: 0 0 10px #fff, 0 0 20px #ff4d94;
-        }
-
-        .final-screen {
-            padding-top: 30px;
-        }
-        .final-screen h1 { font-size: 45px; margin-bottom: 5px; }
-        .final-screen .sub-title {
-            color: #fff;
-            text-shadow: 0 0 5px #fff;
-            font-size: 24px;
-            margin-bottom: 20px; /* **التعديل 14: تقليل الهامش** */
-            font-weight: 600;
-        }
-        .final-screen p {
-            color: #333;
-            line-height: 2; /* **التعديل 15: تقليل التباعد بين السطور** */
-            font-size: 18px;
-            text-align: center;
-            font-weight: 500;
-        }
-
-        .final-screen .text-content {
-            background-color: rgba(255, 255, 255, 0.98);
-            padding: 25px 20px; /* **التعديل 16: تقليل حشوة (Padding) المحتوى النصي** */
-            border-radius: 20px;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(5px);
-            margin-bottom: 25px;
-        }
-
-        .restart-button {
-            background-color: #fce4ec;
-            color: #f72c7b;
-            font-weight: 900;
-            font-family: Arial, sans-serif;
-            text-shadow: none;
-            border: 3px solid #f72c7b;
-            box-shadow: 0 8px #ff69b4, 0 15px 30px rgba(255, 105, 180, 0.8);
-            margin-top: 20px;
-        }
-        .restart-button:hover {
-            background-color: #ff69b4;
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: 0 8px #d93a7d, 0 15px 30px rgba(255, 105, 180, 0.9);
-        }
-        .restart-button:active {
-            box-shadow: 0 3px #d93a7d, 0 5px 15px rgba(255, 77, 148, 0.7);
-            transform: translateY(5px);
-        }
+        /* Selection */
+        .plan-option.selected { border-color: #fbbf24; background: rgba(251, 191, 36, 0.15); }
+        .plan-option.selected .check-icon { opacity: 1; transform: scale(1); }
     </style>
 </head>
-<body>
+<body id="main-body" class="theme-dark min-h-screen flex flex-col selection:bg-primary selection:text-white">
 
-<audio id="background-music" loop>
-    <source src="https://www.soundjay.com/misc/sounds/romantic-piano-1.mp3" type="audio/mpeg">
-    المتصفح لا يدعم تشغيل ملفات الصوت.
-</audio>
-
-<div class="heart-3d-bg">
-    <span class="heart-3d">💖</span>
-    <span class="heart-3d">✨</span>
-    <span class="heart-3d">🤍</span>
-    <span class="heart-3d">💖</span>
-    <span class="heart-3d">✨</span>
-</div>
-
-<div class="scene">
-    <div id="lock-screen" class="screen active lock-screen">
-        <span class="lock-icon">🔒</span>
-        <h2 style="font-family: Arial, sans-serif;">Enter Password<br>Unlock</h2>
-        <input type="password" id="password-input" class="password-input" placeholder="Password" maxlength="6">
-        <button class="button" onclick="checkPassword()">دخول ❤</button>
-        <div id="error-message">كلمة المرور غير صحيحة!</div>
+    <!-- Splash Screen -->
+    <div id="splash-screen" class="fixed inset-0 z-[100] bg-darkBase flex flex-col items-center justify-center">
+        <div class="flex flex-col items-center gap-8 animate-fade-in w-full px-4">
+            <div class="relative group text-center inline-block">
+                <div class="absolute -inset-14 bg-primary/10 rounded-full blur-3xl opacity-40 animate-pulse-slow"></div>
+                <img src="https://i.postimg.cc/rmxKYF3m/file-00000000494c7243a78c8b509f27d7d5.png" alt="Mora Logo" class="w-28 h-28 object-contain mx-auto mb-6 drop-shadow-2xl animate-float">
+                <div class="relative inline-block">
+                    <h1 class="text-4xl md:text-5xl font-black uppercase leading-none tracking-tighter text-gold-3d">
+                        MORA<br>REMOVE
+                    </h1>
+                    <span class="absolute -top-4 -right-8 font-montserrat text-xs font-black text-white bg-red-600 px-2 py-0.5 rounded shadow-lg rotate-12">2.3 AI</span>
+                </div>
+            </div>
+            
+            <div class="w-64 h-1.5 bg-gray-800 rounded-full overflow-hidden mt-8 border border-white/5">
+                <div id="splash-progress" class="h-full bg-gradient-to-r from-primary via-purple-500 to-gold w-0 transition-all duration-[3s] ease-out shadow-[0_0_20px_#fbbf24]"></div>
+            </div>
+            
+            <div class="absolute bottom-10 left-0 right-0 text-center">
+                <span class="text-xs font-bold font-montserrat tracking-[0.4em] text-gray-500 opacity-60">V 21.0 GOLD</span>
+            </div>
+        </div>
     </div>
 
-    <div id="welcome-screen" class="screen welcome-screen">
-        <h1>حبيبة حياتي💗</h1>
-        <div class="text-content">
-            <p>
-                انتي مش شبه حد، انتي شبه الحاجات اللي كنت بدعي ربنا يرزقني بيها من زمان.
-                كل ما عيني تقابل عينك بحس إن قلبي لقى المكان اللي يرتاح فيه.<br>
-                بحب طباعك وضحكتك وزعلك وطريقتك في الكلام… بحبك بكل تفاصيلك.<br>
-                وجودك في حياتي خلاني أحب الدنيا شوية، عشان فيها انتي.<br>
-                ولو خيروني بين كل العالم وبينك، هاختارك انتي كل مرة من غير ما أفكر. 💗✨
-            </p>
-        </div>
-        <p class="next-step-text">تعالي نشوف كام ميموري كده مع بعض</p>
-        <button class="button start-journey-button" onclick="showMemoriesScreen()">
-            <span style="font-family: Arial, sans-serif;">✨ Start Journey ✨</span>
-        </button>
-    </div>
-
-    <div id="memories-screen" class="screen memories-screen">
-        <h1>Memories</h1>
-
-        <div class="memory-card" style="animation-delay: 0.1s;">
-            <img src="https://i.postimg.cc/WpdTJFC5/maxresdefault.jpg" alt="Memory 1">
-            <p class="caption">الاغنيه اللي بنحبها 🎶💖</p>
-        </div>
-
-        <div class="memory-card" style="animation-delay: 0.2s;">
-            <img src="https://i.postimg.cc/HL89ytwh/20251115145848338.jpg" alt="Memory 2">
-            <p class="caption">يوم مش هنساه💗</p>
-        </div>
-
-        <div class="memory-card" style="animation-delay: 0.3s;">
-            <img src="https://i.postimg.cc/Y9pjHrCz/20251115145900343.jpg" alt="Memory 3">
-            <p class="caption">كان يوم تحفه ✨</p>
-        </div>
-
-        <div class="memory-card" style="animation-delay: 0.4s;">
-            <img src="https://i.postimg.cc/g0cn9cjm/20251115145858055.jpg" alt="Memory 4">
-            <p class="caption">كان يوم تحفه💗</p>
-        </div>
-
-        <div class="memory-card" style="animation-delay: 0.5s;">
-            <img src="https://i.postimg.cc/qqHrTQw7/20251115145910377.jpg" alt="Memory 5">
-            <p class="caption">نور عيني ✨💖</p>
-        </div>
-
-        <div class="memory-card" style="animation-delay: 0.6s;">
-            <img src="https://i.postimg.cc/PxmcmHWg/20251112143006051.jpg" alt="Memory 6">
-            <p class="caption">فاكره اليوم ده 💖</p>
-        </div>
-
-        <div class="memory-card" style="animation-delay: 0.7s;">
-            <img src="https://i.postimg.cc/VkrKq1mz/1764026340134.jpg" alt="Memory 7">
-            <p class="caption">💗💗</p>
-        </div>
-
-        <div class="secret-message-text">✨ في حاجه مهمه عايز اقولهالك ✨</div>
-        <button class="button" onclick="showFinalScreen()">💗 دوسي هنا يروحي 💗</button>
-        <div style="height: 50px;"></div>
-    </div>
-
-    <div id="final-screen" class="screen final-screen">
-        <h1>حبيبة أيامي</h1>
-        <div class="sub-title">حبيبة… 🤍✨</div>
-        <div class="text-content">
-            <p>
-                وجودك في حياتي مش حاجة عادية، ده أجمل جزء في يومي. 💫
-                كل مرة بكلمك فيها بحس إن الدنيا أهدى وقلبي مطمَن. 🕊
-                أنا فخور بيكي، وبكل تفصيلة فيكي، وبحبك زي ما إنتي . 💖
-                ربنا يحفظك لقلبي ويخليكي ليا يا نور عيني 🫶🏻💖
-                يا أجمل قدر في حياتي. 💌✨
-            </p>
-        </div>
-        <button class="button restart-button" onclick="restartApp()">Restart</button>
-    </div>
-</div>
-
-<script>
-    const CORRECT_PASSWORD = "522007";
-    const screens = document.querySelectorAll('.screen');
-    const music = document.getElementById('background-music');
-    let musicPlayed = false;
-
-    function tryPlayMusic() {
-        if (!musicPlayed) {
-            music.play().then(() => {
-                musicPlayed = true;
-            }).catch(e => {
-                console.log("Music play delayed until user interaction:", e);
-            });
-        }
-    }
-
-    function stopMusic() {
-        music.pause();
-        music.currentTime = 0;
-    }
-
-    function showScreen(screenId) {
-        screens.forEach(screen => screen.classList.remove('active'));
-        const target = document.getElementById(screenId);
-        target.classList.add('active');
+    <!-- App Content -->
+    <div id="app-content" class="flex flex-col min-h-screen opacity-0 hidden transition-opacity duration-700">
         
-        // **التعديل الهام في JavaScript: لضمان بدء الشاشة من الأعلى**
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        <!-- Header -->
+        <header class="w-full py-3 px-5 flex justify-between items-center z-50 fixed top-0 left-0 right-0 backdrop-blur-xl border-b border-white/5 shadow-sm transition-colors duration-300">
+            <div class="flex items-center gap-2.5">
+                <img src="https://i.postimg.cc/rmxKYF3m/file-00000000494c7243a78c8b509f27d7d5.png" alt="Logo" class="w-7 h-7 object-contain">
+                <div class="flex flex-col">
+                    <span class="text-xs font-bold font-montserrat tracking-widest text-white/90">MORA REMOVE</span>
+                </div>
+            </div>
 
-        if (screenId === 'memories-screen') {
-            document.querySelectorAll('.memory-card').forEach((card, i) => {
-                card.style.opacity = 0;
-                card.style.transform = 'translateY(50px)';
-                void card.offsetWidth;
-                card.style.animation = `floatUp 0.8s ${0.1 * (i + 1)}s forwards`;
-            });
-            tryPlayMusic();
-        } else if (screenId === 'final-screen' || screenId === 'lock-screen') {
-            stopMusic();
-        }
-    }
+            <div class="flex items-center gap-3">
+                <div class="relative">
+                    <button id="theme-btn" class="w-9 h-9 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gold transition border border-white/10 shadow-lg group">
+                        <i class="fas fa-palette text-sm group-hover:rotate-12 transition"></i>
+                    </button>
+                    <div id="theme-menu" class="hidden absolute top-full mt-2 left-0 rtl:right-0 rtl:left-auto bg-gray-900 border border-gray-700 rounded-xl shadow-2xl overflow-hidden min-w-[150px] z-50">
+                        <button onclick="setTheme('dark')" class="theme-opt w-full text-right px-4 py-3 hover:bg-white/5 text-xs text-gray-300 flex items-center gap-3 border-b border-gray-700"><i class="fas fa-moon"></i> Dark</button>
+                        <button onclick="setTheme('midnight')" class="theme-opt w-full text-right px-4 py-3 hover:bg-white/5 text-xs text-blue-300 flex items-center gap-3 border-b border-gray-700"><i class="fas fa-star"></i> Midnight</button>
+                        <button onclick="setTheme('light')" class="theme-opt w-full text-right px-4 py-3 hover:bg-white/5 text-xs text-white flex items-center gap-3"><i class="fas fa-sun"></i> Light</button>
+                    </div>
+                </div>
+                <button id="lang-toggle" class="px-3 py-1.5 rounded-full border border-white/10 bg-white/5 hover:bg-white/10 transition flex items-center gap-1.5 shadow-lg">
+                    <span id="lang-text" class="text-[10px] font-bold font-montserrat">EN</span>
+                    <i class="fas fa-globe text-primary text-[10px]"></i>
+                </button>
+            </div>
+        </header>
 
-    function checkPassword() {
-        const input = document.getElementById('password-input').value.trim();
-        const error = document.getElementById('error-message');
-        if (input === CORRECT_PASSWORD) {
-            error.style.display = 'none';
-            document.getElementById('password-input').value = '';
-            showScreen('welcome-screen');
-        } else {
-            error.style.display = 'block';
-        }
-    }
+        <!-- Main Body -->
+        <main class="flex-grow flex flex-col items-center pt-24 pb-12 px-4 w-full max-w-5xl mx-auto relative z-10">
+            
+            <div class="text-center mb-8 animate-slide-up mt-4">
+                <h2 class="text-3xl md:text-5xl font-black mb-3 leading-tight">
+                    <span data-key="titleMain">إزالة الخلفية</span>
+                </h2>
+                <div class="inline-flex items-center gap-2 bg-gradient-to-r from-primary/10 to-purple-500/10 border border-primary/20 px-4 py-1.5 rounded-full text-primary text-sm font-bold mb-3 shadow-[0_0_20px_rgba(99,102,241,0.15)]">
+                    <span data-key="titleBadge">بضغطة واحدة</span> 
+                    <i class="fas fa-bolt text-xs animate-pulse text-gold"></i>
+                </div>
+                <p class="text-gray-400 text-xs md:text-sm max-w-md mx-auto leading-relaxed" data-key="desc">احترافية بلا حدود. دقة عالية وسرعة فائقة.</p>
+            </div>
 
-    function showMemoriesScreen() {
-        showScreen('memories-screen');
-    }
+            <!-- Upload -->
+            <div id="upload-section" class="w-full max-w-xl animate-slide-up" style="animation-delay: 0.1s;">
+                <div class="glass p-1 rounded-[2rem] relative group shadow-2xl">
+                    <div class="absolute -inset-0.5 bg-gradient-to-r from-primary to-purple-500 rounded-[2rem] blur opacity-20 group-hover:opacity-40 transition duration-500"></div>
+                    <div id="drop-zone" class="relative bg-black/30 rounded-[1.9rem] p-12 border-2 border-dashed border-gray-600 hover:border-primary cursor-pointer transition-all duration-300 text-center">
+                        <input type="file" id="file-input" class="hidden" accept="image/*">
+                        <div id="upload-ui" class="flex flex-col items-center gap-4">
+                            <div class="w-16 h-16 rounded-full bg-white/5 flex items-center justify-center shadow-lg group-hover:scale-110 transition border border-white/10 mb-2 relative overflow-hidden">
+                                <div class="absolute inset-0 bg-primary/20 blur-md"></div>
+                                <i class="fas fa-cloud-upload-alt text-3xl text-primary relative z-10"></i>
+                            </div>
+                            <h3 class="text-lg font-bold text-white" data-key="dropTitle">اضغط لرفع صورة</h3>
+                            <p class="text-[10px] text-gray-500" data-key="dropDesc">يدعم الأشخاص والمنتجات</p>
+                        </div>
+                        <div id="processing-ui" class="hidden flex flex-col items-center py-2">
+                            <div class="relative w-12 h-12 mb-3">
+                                <div class="absolute inset-0 border-4 border-gray-700 rounded-full"></div>
+                                <div class="absolute inset-0 border-4 border-primary border-t-transparent rounded-full animate-spin"></div>
+                            </div>
+                            <p class="text-xs font-bold animate-pulse text-white" data-key="process">جاري المعالجة...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-    function showFinalScreen() {
-        stopMusic();
-        showScreen('final-screen');
-    }
+            <!-- Result Editor -->
+            <div id="result-section" class="w-full hidden animate-fade-in mt-6">
+                <!-- Undo/Redo & Compare Bar -->
+                <div class="w-full flex justify-between items-center mb-4 px-2">
+                    <div class="flex gap-2">
+                        <button onclick="undo()" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-300 border border-white/10 transition tooltip-container" title="Undo">
+                            <i class="fas fa-undo text-sm"></i>
+                        </button>
+                        <button onclick="redo()" class="w-10 h-10 rounded-full bg-white/5 hover:bg-white/10 flex items-center justify-center text-gray-300 border border-white/10 transition" title="Redo">
+                            <i class="fas fa-redo text-sm"></i>
+                        </button>
+                    </div>
+                    <button id="toggle-compare" class="bg-white/5 border border-white/10 px-4 py-2 rounded-full text-xs font-bold text-gold hover:bg-white/10 transition flex items-center gap-2">
+                        <i class="fas fa-columns"></i> <span data-key="compare">مقارنة</span>
+                    </button>
+                </div>
 
-    function restartApp() {
-        stopMusic();
-        showScreen('lock-screen');
-    }
+                <!-- Preview (INTERACTIVE) -->
+                <div class="w-full glass rounded-2xl p-4 relative mb-6 shadow-2xl">
+                    <div class="flex items-center justify-between mb-3 px-1">
+                        <span class="text-gray-400 text-[10px] font-bold uppercase tracking-widest bg-white/5 px-2 py-1 rounded">Interactive Editor</span>
+                        <button id="btn-close-result" class="text-gray-500 hover:text-red-400 w-8 h-8 flex items-center justify-center transition bg-white/5 rounded-full"><i class="fas fa-times"></i></button>
+                    </div>
+                    
+                    <!-- Canvas Container -->
+                    <div class="relative w-full h-[400px] bg-black/30 rounded-xl overflow-hidden flex items-center justify-center border border-white/5 shadow-inner select-none" id="preview-container">
+                        <div id="preview-bg" class="absolute inset-0 transparency-bg z-0 transition-all duration-300"></div>
+                        
+                        <!-- Main Subject Image -->
+                        <img id="result-image" src="" class="relative z-10 max-w-full max-h-full object-contain drop-shadow-2xl cursor-grab transition-filter duration-200" alt="Result" draggable="false">
+                        
+                        <!-- Original Image for Comparison (Hidden by default) -->
+                        <div id="compare-overlay" class="absolute inset-0 z-30 hidden bg-black/50 overflow-hidden" style="width: 100%;">
+                            <div id="compare-slider-wrapper" class="absolute top-0 left-0 h-full w-1/2 overflow-hidden border-r-2 border-gold bg-black/30">
+                                <img id="original-image-preview" src="" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 max-w-none h-full object-contain">
+                            </div>
+                            <div id="compare-handle" class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-gold rounded-full flex items-center justify-center cursor-ew-resize z-40 shadow-lg border-2 border-white">
+                                <i class="fas fa-arrows-alt-h text-black text-xs"></i>
+                            </div>
+                        </div>
 
-    document.addEventListener('DOMContentLoaded', () => {
-        showScreen('lock-screen');
-        document.getElementById('password-input').addEventListener('keypress', e => {
-            if (e.key === 'Enter') checkPassword();
+                        <div class="absolute inset-0 z-50 flex items-center justify-center pointer-events-none opacity-20 text-white/20 text-xs" id="drag-hint" data-key="dragHint">اسحب للتحريك</div>
+                    </div>
+
+                    <!-- Tools Tab Nav -->
+                    <div class="mt-5 border-b border-white/10 flex gap-6 px-2 overflow-x-auto hide-scroll">
+                        <button onclick="switchTab('backgrounds')" class="tab-btn active pb-2 text-xs font-bold text-primary border-b-2 border-primary transition-all whitespace-nowrap" data-tab="backgrounds" data-key="tabBg">الخلفيات</button>
+                        <button onclick="switchTab('ai')" class="tab-btn pb-2 text-xs font-bold text-gray-400 hover:text-white transition-all whitespace-nowrap flex items-center gap-1" data-tab="ai">
+                            Mora Ai <span class="bg-gradient-to-r from-gold to-orange-500 text-black text-[8px] px-1 rounded font-black">2.3</span>
+                        </button>
+                        <button onclick="switchTab('shadows')" class="tab-btn pb-2 text-xs font-bold text-gray-400 hover:text-white transition-all whitespace-nowrap" data-tab="shadows" data-key="tabShadow">الظل الذكي</button>
+                        <button onclick="switchTab('adjust')" class="tab-btn pb-2 text-xs font-bold text-gray-400 hover:text-white transition-all whitespace-nowrap" data-tab="adjust" data-key="tabAdjust">ضبط</button>
+                    </div>
+
+                    <!-- Tools Content -->
+                    <div class="mt-4 min-h-[120px]">
+                        
+                        <!-- Backgrounds -->
+                        <div id="tab-backgrounds" class="tool-content block">
+                             <div class="flex gap-3 overflow-x-auto hide-scroll snap-x py-2 px-1" id="shapes-slider"></div>
+                        </div>
+
+                        <!-- Mora AI Generator -->
+                        <div id="tab-ai" class="tool-content hidden">
+                            <div class="flex flex-col gap-3">
+                                <div class="flex justify-between items-center">
+                                    <h4 class="text-sm font-bold text-white flex items-center gap-2"><i class="fas fa-magic text-gold"></i> <span data-key="aiTitle">توليد خلفية ذكية</span></h4>
+                                </div>
+                                <p class="text-[10px] text-gray-400" data-key="aiDesc">يقوم Mora Ai بتوليد خلفيات فريدة تناسب صورتك.</p>
+                                <button onclick="generateAiBackground()" class="w-full py-3 bg-gradient-to-r from-purple-600 to-blue-600 rounded-xl text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg hover:shadow-purple-500/30 transition">
+                                    <i class="fas fa-sparkles animate-pulse"></i> <span data-key="aiBtn">توليد (Generate)</span>
+                                </button>
+                                <div id="ai-results" class="flex gap-2 overflow-x-auto hide-scroll mt-2">
+                                    <!-- Generated results will appear here -->
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Smart Shadow -->
+                        <div id="tab-shadows" class="tool-content hidden">
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label class="text-[10px] text-gray-400 block mb-1" data-key="shadowBlur">النعومة</label>
+                                    <input type="range" id="shadow-blur" min="0" max="50" value="0" class="accent-secondary h-1 bg-white/10 rounded-lg w-full">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] text-gray-400 block mb-1" data-key="shadowOpacity">الشفافية</label>
+                                    <input type="range" id="shadow-opacity" min="0" max="1" step="0.1" value="0.5" class="accent-secondary h-1 bg-white/10 rounded-lg w-full">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] text-gray-400 block mb-1" data-key="shadowX">اتجاه X</label>
+                                    <input type="range" id="shadow-x" min="-50" max="50" value="10" class="accent-secondary h-1 bg-white/10 rounded-lg w-full">
+                                </div>
+                                <div>
+                                    <label class="text-[10px] text-gray-400 block mb-1" data-key="shadowY">اتجاه Y</label>
+                                    <input type="range" id="shadow-y" min="-50" max="50" value="10" class="accent-secondary h-1 bg-white/10 rounded-lg w-full">
+                                </div>
+                            </div>
+                            <div class="mt-3 flex gap-2">
+                                <div class="w-6 h-6 rounded-full bg-black cursor-pointer border border-white/20 hover:scale-110 transition" onclick="setShadowColor('#000000')"></div>
+                                <div class="w-6 h-6 rounded-full bg-gray-600 cursor-pointer border border-white/20 hover:scale-110 transition" onclick="setShadowColor('#4b5563')"></div>
+                                <div class="w-6 h-6 rounded-full bg-gray-400 cursor-pointer border border-white/20 hover:scale-110 transition" onclick="setShadowColor('#9ca3af')"></div>
+                            </div>
+                        </div>
+
+                        <!-- Adjustments -->
+                        <div id="tab-adjust" class="tool-content hidden">
+                            <div class="space-y-4">
+                                <div class="flex items-center gap-3 bg-black/20 rounded-full px-4 py-2 border border-white/5">
+                                    <i class="fas fa-image text-xs text-gray-400"></i>
+                                    <input type="range" id="img-scale" min="0.1" max="3.0" step="0.05" value="1" class="accent-gold w-full h-1 bg-white/10 rounded-lg appearance-none cursor-pointer">
+                                    <i class="fas fa-expand text-lg text-primary"></i>
+                                </div>
+                                <button onclick="autoCenter()" class="w-full py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold text-gray-300 flex items-center justify-center gap-2 transition">
+                                    <i class="fas fa-compress-arrows-alt text-gold"></i> <span data-key="autoCenter">توسيط تلقائي (Auto Center)</span>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Download Section -->
+                <div class="glass rounded-xl p-5 shadow-lg w-full">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-gray-300 text-xs font-bold uppercase flex items-center gap-2">
+                            <i class="fas fa-sliders-h text-primary"></i> <span data-key="quality">تصدير</span>
+                        </h3>
+                        <!-- Format Selector -->
+                        <div class="flex bg-black/40 rounded-lg p-1">
+                            <button onclick="setFormat('png')" id="fmt-png" class="px-3 py-1 text-[10px] font-bold rounded bg-primary text-white transition">PNG</button>
+                            <button onclick="setFormat('jpg')" id="fmt-jpg" class="px-3 py-1 text-[10px] font-bold rounded text-gray-400 hover:text-white transition">JPG</button>
+                        </div>
+                    </div>
+                    
+                    <div class="grid grid-cols-5 gap-2 mb-4">
+                        <label class="cursor-pointer"><input type="radio" name="quality" value="std" class="peer hidden" checked><div class="border border-white/10 bg-white/5 rounded-lg p-2 text-center peer-checked:border-primary peer-checked:bg-primary/20 transition hover:bg-white/10"><div class="text-[9px] font-bold">STD</div></div></label>
+                        <label class="cursor-pointer"><input type="radio" name="quality" value="hd" class="peer hidden"><div class="border border-white/10 bg-white/5 rounded-lg p-2 text-center peer-checked:border-primary peer-checked:bg-primary/20 transition hover:bg-white/10"><div class="text-[9px] font-bold">HD</div></div></label>
+                        <label class="cursor-pointer"><input type="radio" name="quality" value="fhd" class="peer hidden"><div class="border border-white/10 bg-white/5 rounded-lg p-2 text-center peer-checked:border-primary peer-checked:bg-primary/20 transition hover:bg-white/10"><div class="text-[9px] font-bold">FHD</div></div></label>
+                        <label class="cursor-pointer"><input type="radio" name="quality" value="2k" class="peer hidden"><div class="border border-white/10 bg-white/5 rounded-lg p-2 text-center peer-checked:border-primary peer-checked:bg-primary/20 transition hover:bg-white/10"><div class="text-[9px] font-bold">2K</div></div></label>
+                        <div id="btn-ultra-trigger" class="cursor-pointer border border-gold/30 bg-gradient-to-br from-gold/10 to-transparent rounded-lg p-2 text-center relative overflow-hidden group hover:border-gold hover:shadow-[0_0_15px_rgba(251,191,36,0.2)] transition"><div class="text-[9px] font-black text-gold flex items-center justify-center gap-1">4K <i class="fas fa-crown text-[6px]"></i></div></div>
+                    </div>
+                    
+                    <button id="btn-generate-link" class="w-full mb-3 py-2 bg-white/5 hover:bg-white/10 border border-white/10 rounded-lg text-xs font-bold text-gray-300 flex items-center justify-center gap-2 transition">
+                        <i class="fas fa-link text-primary"></i> <span data-key="genLink">توليد رابط مشاركة</span>
+                    </button>
+
+                    <div class="flex flex-col items-center">
+                        <button id="btn-download" class="w-full bg-primary hover:bg-primary/90 text-white rounded-xl p-3 flex items-center justify-center gap-2 font-bold shadow-lg shadow-primary/20 transition transform active:scale-95">
+                            <span class="text-sm" data-key="download">حفظ في المعرض</span>
+                            <i class="fas fa-download text-xs"></i>
+                        </button>
+                        <div class="text-[9px] text-gray-500 mt-2 flex gap-2">
+                            <span><i class="fas fa-shield-alt"></i> No Server Storage</span>
+                            <span><i class="fas fa-history"></i> Local Session</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Gallery & Samples -->
+            <div id="saved-section" class="w-full mt-10 hidden animate-slide-up">
+                <h3 class="text-sm font-bold mb-3 flex items-center gap-2 text-gray-400 px-2" data-key="gallery"><i class="fas fa-history text-primary"></i> المحفوظات (History)</h3>
+                <div id="saved-grid" class="grid grid-cols-4 md:grid-cols-6 gap-2"></div>
+            </div>
+            <div id="samples-section" class="w-full mt-12 animate-slide-up" style="animation-delay: 0.2s;">
+                <p class="text-center text-gray-500 mb-4 font-semibold uppercase tracking-widest text-[10px]" data-key="samples">جرب الآن</p>
+                <div class="flex justify-center gap-4 flex-wrap">
+                    <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=150&q=80" class="w-16 h-16 rounded-2xl object-cover cursor-pointer hover:ring-2 ring-primary transition duration-300 shadow-lg sample-img grayscale hover:grayscale-0">
+                    <img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=150&q=80" class="w-16 h-16 rounded-2xl object-cover cursor-pointer hover:ring-2 ring-primary transition duration-300 shadow-lg sample-img grayscale hover:grayscale-0">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=150&q=80" class="w-16 h-16 rounded-2xl object-cover cursor-pointer hover:ring-2 ring-primary transition duration-300 shadow-lg sample-img grayscale hover:grayscale-0">
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="mt-auto bg-midnightBase/90 backdrop-blur-lg border-t border-white/5 py-8 relative z-20">
+            <div class="max-w-5xl mx-auto px-6 flex flex-col md:flex-row justify-between items-center gap-6">
+                <div class="flex items-center gap-3 opacity-80">
+                    <img src="https://i.postimg.cc/rmxKYF3m/file-00000000494c7243a78c8b509f27d7d5.png" class="w-6 h-6 grayscale opacity-70">
+                    <span class="text-xs text-gray-500 font-montserrat tracking-widest">© 2026 MORA REMOVE</span>
+                </div>
+                <div class="flex items-center gap-6">
+                    <a href="https://www.facebook.com/share/1CDtFCSPVD/" target="_blank" class="social-btn text-gray-400 text-lg"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.instagram.com/eltopamr55" target="_blank" class="social-btn text-gray-400 text-lg"><i class="fab fa-instagram"></i></a>
+                    <a href="https://wa.me/201067941806" target="_blank" class="social-btn text-gray-400 text-lg"><i class="fab fa-whatsapp"></i></a>
+                    <a href="mailto:amrloutfy2006@gmail.com" class="social-btn text-gray-400 text-lg"><i class="fas fa-envelope"></i></a>
+                </div>
+            </div>
+        </footer>
+    </div>
+
+    <!-- Gold Modal (Payment) -->
+    <div id="gold-modal" class="fixed inset-0 z-[120] bg-black/95 hidden flex items-center justify-center p-4 backdrop-blur-md opacity-0 transition-all duration-300">
+        <div class="w-full max-w-sm glass-modal rounded-[2rem] overflow-hidden relative transform scale-95 transition-transform duration-300 shadow-[0_0_50px_rgba(251,191,36,0.15)]">
+            <button id="close-modal" class="absolute top-4 right-4 z-20 w-9 h-9 bg-black/40 hover:bg-red-500/80 text-white rounded-full flex items-center justify-center transition border border-white/10 backdrop-blur-sm group"><i class="fas fa-times group-hover:rotate-90 transition"></i></button>
+            <div class="h-36 bg-gradient-to-b from-yellow-600 via-yellow-500 to-yellow-400 flex flex-col items-center justify-center relative overflow-hidden">
+                <div class="absolute inset-0 bg-[url('https://www.transparenttextures.com/patterns/cubes.png')] opacity-20"></div>
+                <div class="absolute bottom-0 w-full h-12 bg-gradient-to-t from-gray-900 to-transparent"></div>
+                <i class="fas fa-crown text-5xl text-white drop-shadow-lg mb-2 animate-float"></i>
+                <h3 id="modal-title" class="text-2xl font-black text-white font-montserrat uppercase tracking-widest drop-shadow-md">PREMIUM</h3>
+            </div>
+            <div class="p-8 bg-gray-900 text-center">
+                <p id="modal-desc" class="text-gray-400 text-sm mb-6 leading-relaxed">فتح الميزات الحصرية الآن</p>
+                <div id="modal-content" class="mb-8"></div>
+                <button id="pay-btn" class="w-full py-4 bg-gradient-to-r from-yellow-500 to-yellow-400 hover:from-yellow-400 hover:to-yellow-300 text-black font-black rounded-xl shadow-[0_5px_20px_rgba(251,191,36,0.3)] transition transform hover:scale-[1.02] flex items-center justify-center gap-2 group">
+                    <span id="pay-text">دفع الآن</span>
+                    <i class="fas fa-arrow-left rtl:hidden group-hover:-translate-x-1 transition"></i><i class="fas fa-arrow-right ltr:hidden group-hover:translate-x-1 transition"></i>
+                </button>
+                <div class="mt-4 flex justify-center items-center gap-2 opacity-50 grayscale hover:grayscale-0 transition duration-300">
+                    <i class="fas fa-shield-alt text-gray-500 text-xs"></i>
+                    <span class="text-[10px] text-gray-500 font-montserrat">Secured by InstaPay</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Link Generation Modal -->
+    <div id="link-modal" class="fixed inset-0 z-[130] bg-black/95 hidden flex items-center justify-center p-4 backdrop-blur-md opacity-0 transition-all duration-300">
+        <div class="w-full max-w-sm glass-modal rounded-[2rem] overflow-hidden relative transform scale-95 transition-transform duration-300 border border-primary/20">
+            <button id="close-link-modal" class="absolute top-4 right-4 z-20 w-8 h-8 bg-black/30 hover:bg-white/10 text-white rounded-full flex items-center justify-center transition"><i class="fas fa-times"></i></button>
+            <div class="p-8 text-center">
+                <div id="link-step-1">
+                    <div class="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center mx-auto mb-4 border border-primary/30">
+                        <i class="fas fa-link text-2xl text-primary"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-white mb-2" data-key="linkTitle">توليد رابط PNG؟</h3>
+                    <p class="text-gray-400 text-sm mb-6" data-key="linkDesc">سيتم إنشاء رابط مباشر للصورة بصيغة PNG عالية الجودة.</p>
+                    <div class="flex gap-3">
+                        <button id="btn-link-no" class="flex-1 py-3 rounded-xl border border-white/10 hover:bg-white/5 text-gray-300 transition" data-key="no">لا</button>
+                        <button id="btn-link-yes" class="flex-1 py-3 rounded-xl bg-primary hover:bg-primary/90 text-white font-bold transition shadow-lg shadow-primary/20" data-key="yes">نعم، توليد</button>
+                    </div>
+                </div>
+                <div id="link-step-2" class="hidden">
+                    <i class="fas fa-check-circle text-4xl text-green-400 mb-4 animate-pop-in"></i>
+                    <h3 class="text-lg font-bold text-white mb-2" data-key="linkReady">تم إنشاء الرابط</h3>
+                    <div class="bg-black/30 rounded-lg p-3 mb-4 flex items-center gap-2 border border-white/5">
+                        <input type="text" id="generated-link" readonly class="bg-transparent w-full text-xs text-gray-400 outline-none" value="">
+                    </div>
+                    <button id="btn-copy-link" class="w-full py-3 bg-gray-700 hover:bg-gray-600 text-white rounded-xl font-bold transition flex items-center justify-center gap-2">
+                        <i class="fas fa-copy"></i> <span data-key="copy">نسخ الرابط</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast & Canvas -->
+    <div id="toast" class="toast"><i class="fas fa-check-circle text-green-400"></i> <span id="toast-text">تم الحفظ بنجاح</span></div>
+    <canvas id="process-canvas" class="hidden"></canvas>
+
+    <script>
+        const API_KEY = 'TMZcwx849K6V9oRZRA4SJ3fp';
+        
+        // --- Localization ---
+        const translations = {
+            ar: {
+                titleMain: "إزالة الخلفية",
+                titleBadge: "بضغطة واحدة",
+                desc: "احترافية بلا حدود. دقة عالية وسرعة فائقة.",
+                dropTitle: "اضغط لرفع صورة",
+                dropDesc: "يدعم الأشخاص والمنتجات",
+                process: "جاري المعالجة...",
+                compare: "مقارنة",
+                dragHint: "اسحب للتحريك",
+                tabBg: "الخلفيات",
+                tabShadow: "الظل الذكي",
+                tabAdjust: "ضبط",
+                aiTitle: "توليد خلفية ذكية",
+                aiDesc: "يقوم Mora Ai بتوليد خلفيات فريدة تناسب صورتك.",
+                aiBtn: "توليد (Generate)",
+                shadowBlur: "النعومة",
+                shadowOpacity: "الشفافية",
+                shadowX: "اتجاه X",
+                shadowY: "اتجاه Y",
+                autoCenter: "توسيط تلقائي (Auto Center)",
+                quality: "تصدير",
+                genLink: "توليد رابط مشاركة",
+                download: "حفظ في المعرض",
+                gallery: "المحفوظات (History)",
+                samples: "جرب الآن",
+                linkTitle: "توليد رابط PNG؟",
+                linkDesc: "سيتم إنشاء رابط مباشر للصورة بصيغة PNG عالية الجودة.",
+                linkReady: "تم إنشاء الرابط",
+                no: "لا",
+                yes: "نعم، توليد",
+                copy: "نسخ الرابط",
+                toastSaved: "تم الحفظ بنجاح",
+                payNow: "دفع الآن"
+            },
+            en: {
+                titleMain: "Remove Background",
+                titleBadge: "One Click",
+                desc: "Unlimited Professionalism. High Precision & Speed.",
+                dropTitle: "Tap to Upload",
+                dropDesc: "Supports People & Products",
+                process: "Processing...",
+                compare: "Compare",
+                dragHint: "Drag to Move",
+                tabBg: "Backgrounds",
+                tabShadow: "Smart Shadow",
+                tabAdjust: "Adjust",
+                aiTitle: "Smart AI Background",
+                aiDesc: "Mora Ai generates unique backgrounds fitting your image.",
+                aiBtn: "Generate",
+                shadowBlur: "Blur",
+                shadowOpacity: "Opacity",
+                shadowX: "Direction X",
+                shadowY: "Direction Y",
+                autoCenter: "Auto Center",
+                quality: "Export",
+                genLink: "Share Link",
+                download: "Save to Gallery",
+                gallery: "History",
+                samples: "Try Now",
+                linkTitle: "Generate PNG Link?",
+                linkDesc: "Direct high-quality PNG link will be created.",
+                linkReady: "Link Ready",
+                no: "No",
+                yes: "Yes, Generate",
+                copy: "Copy Link",
+                toastSaved: "Saved Successfully",
+                payNow: "Pay Now"
+            }
+        };
+
+        // --- Data Generation (Shapes) ---
+        const generateShapes = () => {
+            const items = [];
+            const freePool = [
+                {id:'trans', val:'transparent', pro:false},
+                {id:'fc_w', val:'#ffffff', pro:false}, {id:'fc_b', val:'#000000', pro:false}, 
+                {id:'fc_g', val:'#94a3b8', pro:false}, {id:'fc_r', val:'#ef4444', pro:false}, 
+                {id:'fc_y', val:'#eab308', pro:false}, {id:'fc_gr', val:'#22c55e', pro:false},
+                {id:'fc_bl', val:'#3b82f6', pro:false}, {id:'fc_p', val:'#a855f7', pro:false},
+                {id:'fg_1', val:'linear-gradient(135deg,#fdfbfb,#ebedee)', pro:false},
+                {id:'fg_2', val:'linear-gradient(to right,#4facfe,#00f2fe)', pro:false},
+                {id:'fg_3', val:'linear-gradient(to top,#c471f5,#fa71cd)', pro:false}
+            ];
+            // Pro Pool (Existing + More)
+            const proPool = [
+                {id:'p_qtm', val:'radial-gradient(circle at 50% 50%, #2e0249, #000)', shadow:'inset 0 0 50px #570a57', pro:true},
+                {id:'p_cyb', val:'linear-gradient(0deg, transparent 24%, rgba(0, 255, 255, .3) 25%, rgba(0, 255, 255, .3) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, .3) 75%, rgba(0, 255, 255, .3) 76%, transparent 77%, transparent), linear-gradient(90deg, transparent 24%, rgba(0, 255, 255, .3) 25%, rgba(0, 255, 255, .3) 26%, transparent 27%, transparent 74%, rgba(0, 255, 255, .3) 75%, rgba(0, 255, 255, .3) 76%, transparent 77%, transparent)', bgSize:'30px 30px', bgCol:'#000', pro:true},
+                {id:'p_neb', val:'radial-gradient(circle, #fbbf24 0%, transparent 70%), radial-gradient(circle, #b45309 0%, #000 100%)', pro:true},
+                {id:'p_mtx', val:'linear-gradient(180deg, rgba(0, 255, 0, 0.1), rgba(0, 0, 0, 1))', border:'2px solid #0f0', pro:true},
+                {id:'p_gold', val:'linear-gradient(to bottom right, #fde68a, #d97706, #78350f)', pro:true}
+            ];
+            return [...freePool, ...proPool];
+        };
+
+        const shapes = generateShapes();
+
+        // --- State ---
+        const state = {
+            unlocked: JSON.parse(localStorage.getItem('mora_v21_unlocked') || '[]'),
+            selectedShape: shapes[0],
+            currentUrl: null,
+            originalUrl: null, // For comparison
+            pendingItem: null,
+            selectedPlan: null,
+            imgScale: 1,
+            isDragging: false,
+            startX: 0, startY: 0,
+            posX: 0, posY: 0,
+            shadow: { blur: 0, opacity: 0.5, x: 10, y: 10, color: '#000000' },
+            format: 'png',
+            lang: 'ar',
+            history: [],
+            historyIndex: -1
+        };
+
+        // --- Init ---
+        document.addEventListener('DOMContentLoaded', () => {
+            initSplash();
+            renderShapes();
+            setupEvents();
+            setupInteraction();
+            updateLang();
         });
 
-        // تفعيل الموسيقى عند أول نقر
-        document.body.addEventListener('click', tryPlayMusic, { once: true });
-    });
-</script>
+        function initSplash() {
+            setTimeout(() => document.getElementById('splash-progress').style.width = '100%', 500);
+            setTimeout(() => {
+                document.getElementById('splash-screen').style.opacity = '0';
+                setTimeout(() => { 
+                    document.getElementById('splash-screen').style.display = 'none'; 
+                    document.getElementById('app-content').classList.remove('hidden');
+                    setTimeout(() => document.getElementById('app-content').classList.remove('opacity-0'), 100);
+                }, 800);
+            }, 3000);
+        }
 
+        // --- Shapes & AI ---
+        function renderShapes() {
+            const container = document.getElementById('shapes-slider');
+            container.innerHTML = '';
+            shapes.forEach(shape => {
+                const el = document.createElement('div');
+                el.className = `shape-item min-w-[60px] h-[60px] rounded-xl cursor-pointer relative overflow-hidden shrink-0 snap-center border border-white/10 ${state.selectedShape.id === shape.id ? 'active' : ''}`;
+                
+                if(shape.val === 'transparent') { el.classList.add('transparency-bg'); } 
+                else {
+                    el.style.background = shape.val;
+                    if(shape.bgCol) el.style.backgroundColor = shape.bgCol;
+                    if(shape.bgSize) el.style.backgroundSize = shape.bgSize;
+                    if(shape.border) el.style.boxShadow = `inset 0 0 0 4px ${shape.border.split(' ').pop()}`;
+                }
+
+                if(shape.pro && !state.unlocked.includes(shape.id)) {
+                    const badge = document.createElement('div');
+                    badge.className = 'absolute top-0 right-0 bg-gold text-black text-[7px] font-black px-1.5 py-0.5 rounded-bl-md z-10 shadow-sm';
+                    badge.innerHTML = 'PRO <i class="fas fa-crown"></i>';
+                    el.appendChild(badge);
+                }
+                el.onclick = () => { 
+                    handleShapeClick(shape, el);
+                    saveHistoryState();
+                };
+                container.appendChild(el);
+            });
+        }
+
+        // --- Simulated AI Generator (Mora Ai 2.3) ---
+        function generateAiBackground() {
+            const colors = ['#0f172a', '#312e81', '#1e1b4b', '#4c0519', '#064e3b', '#000000', '#1a1a1a'];
+            const gradients = [
+                'linear-gradient(45deg, #ff9a9e 0%, #fad0c4 99%, #fad0c4 100%)',
+                'linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%)',
+                'radial-gradient(circle, #ffecd2 0%, #fcb69f 100%)',
+                'linear-gradient(120deg, #d4fc79 0%, #96e6a1 100%)',
+                'linear-gradient(to right, #4facfe 0%, #00f2fe 100%)',
+                'linear-gradient(to top, #cfd9df 0%, #e2ebf0 100%)',
+                'radial-gradient(circle at center, #000000 0%, #2c3e50 100%)',
+                'conic-gradient(from 180deg at 50% 50%, #FF0000 0deg, #00FF00 120deg, #0000FF 240deg, #FF0000 360deg)'
+            ];
+
+            const resultContainer = document.getElementById('ai-results');
+            resultContainer.innerHTML = '';
+            
+            // Generate 10 options
+            for(let i=0; i<10; i++) {
+                const randomBg = Math.random() > 0.5 ? 
+                    gradients[Math.floor(Math.random()*gradients.length)] : 
+                    colors[Math.floor(Math.random()*colors.length)];
+                
+                const id = `ai_gen_${Date.now()}_${i}`;
+                const shape = { id: id, val: randomBg, pro: false, isAi: true };
+                
+                const el = document.createElement('div');
+                el.className = 'min-w-[50px] h-[50px] rounded-lg cursor-pointer border border-white/20 hover:scale-105 transition animate-pop-in';
+                el.style.background = randomBg;
+                el.onclick = () => {
+                    state.selectedShape = shape;
+                    updatePreview();
+                    saveHistoryState();
+                    // Highlight logic
+                    document.querySelectorAll('.shape-item').forEach(i => i.classList.remove('active'));
+                };
+                resultContainer.appendChild(el);
+            }
+        }
+
+        function handleShapeClick(shape, el) {
+            if(shape.pro && !state.unlocked.includes(shape.id)) {
+                state.pendingItem = shape; openGoldModal('item'); return;
+            }
+            state.selectedShape = shape;
+            document.querySelectorAll('.shape-item').forEach(i => i.classList.remove('active'));
+            if(el) el.classList.add('active');
+            updatePreview();
+        }
+
+        // --- History / Undo / Redo ---
+        function saveHistoryState() {
+            // Don't save if it's the same as current
+            const newState = JSON.stringify({
+                shape: state.selectedShape,
+                scale: state.imgScale,
+                posX: state.posX,
+                posY: state.posY,
+                shadow: state.shadow
+            });
+            
+            // Remove future states if we are in middle of stack
+            if (state.historyIndex < state.history.length - 1) {
+                state.history = state.history.slice(0, state.historyIndex + 1);
+            }
+            
+            state.history.push(newState);
+            state.historyIndex++;
+        }
+
+        function undo() {
+            if (state.historyIndex > 0) {
+                state.historyIndex--;
+                applyHistoryState(state.history[state.historyIndex]);
+            }
+        }
+
+        function redo() {
+            if (state.historyIndex < state.history.length - 1) {
+                state.historyIndex++;
+                applyHistoryState(state.history[state.historyIndex]);
+            }
+        }
+
+        function applyHistoryState(jsonState) {
+            const data = JSON.parse(jsonState);
+            state.selectedShape = data.shape;
+            state.imgScale = data.scale;
+            state.posX = data.posX;
+            state.posY = data.posY;
+            state.shadow = data.shadow;
+            
+            // Update UI Controls
+            document.getElementById('img-scale').value = state.imgScale;
+            document.getElementById('shadow-blur').value = state.shadow.blur;
+            document.getElementById('shadow-opacity').value = state.shadow.opacity;
+            document.getElementById('shadow-x').value = state.shadow.x;
+            document.getElementById('shadow-y').value = state.shadow.y;
+            
+            // Update shape selection UI
+            document.querySelectorAll('.shape-item').forEach(i => i.classList.remove('active'));
+            // Try to find the shape element if it exists in the main list
+            const shapeEl = Array.from(document.querySelectorAll('.shape-item')).find(el => {
+                // Heuristic to match background style
+                return el.style.background === state.selectedShape.val;
+            });
+            if(shapeEl) shapeEl.classList.add('active');
+
+            updatePreview();
+        }
+
+        // --- Interaction ---
+        function setupInteraction() {
+            const container = document.getElementById('preview-container');
+            const slider = document.getElementById('img-scale');
+
+            // Wheel
+            container.addEventListener('wheel', (e) => {
+                e.preventDefault();
+                const delta = e.deltaY * -0.001;
+                let newScale = parseFloat(state.imgScale) + delta;
+                newScale = Math.min(Math.max(newScale, 0.1), 3.0);
+                state.imgScale = newScale;
+                slider.value = newScale;
+                updatePreview();
+                // Debounce save history
+                clearTimeout(window.saveTimer);
+                window.saveTimer = setTimeout(saveHistoryState, 500);
+            });
+
+            // Drag Mouse
+            container.addEventListener('mousedown', (e) => {
+                state.isDragging = true;
+                state.startX = e.clientX - state.posX;
+                state.startY = e.clientY - state.posY;
+                container.style.cursor = 'grabbing';
+            });
+            window.addEventListener('mousemove', (e) => {
+                if(!state.isDragging) return;
+                e.preventDefault();
+                state.posX = e.clientX - state.startX;
+                state.posY = e.clientY - state.startY;
+                updatePreview();
+            });
+            window.addEventListener('mouseup', () => { 
+                if(state.isDragging) saveHistoryState();
+                state.isDragging = false; 
+                container.style.cursor = 'grab'; 
+            });
+
+            // Touch
+            let initialDistance = 0;
+            let initialScale = 1;
+            container.addEventListener('touchstart', (e) => {
+                if(e.touches.length === 1) {
+                    state.isDragging = true;
+                    state.startX = e.touches[0].clientX - state.posX;
+                    state.startY = e.touches[0].clientY - state.posY;
+                } else if(e.touches.length === 2) {
+                    state.isDragging = false;
+                    initialDistance = Math.hypot(e.touches[0].pageX - e.touches[1].pageX, e.touches[0].pageY - e.touches[1].pageY);
+                    initialScale = parseFloat(state.imgScale);
+                }
+            }, {passive: false});
+
+            window.addEventListener('touchmove', (e) => {
+                if(e.touches.length === 1 && state.isDragging) {
+                    if(e.cancelable) e.preventDefault();
+                    state.posX = e.touches[0].clientX - state.startX;
+                    state.posY = e.touches[0].clientY - state.startY;
+                    updatePreview();
+                } else if(e.touches.length === 2) {
+                    if(e.cancelable) e.preventDefault();
+                    const currentDistance = Math.hypot(e.touches[0].pageX - e.touches[1].pageX, e.touches[0].pageY - e.touches[1].pageY);
+                    const ratio = currentDistance / initialDistance;
+                    let newScale = initialScale * ratio;
+                    newScale = Math.min(Math.max(newScale, 0.1), 3.0);
+                    state.imgScale = newScale;
+                    slider.value = newScale;
+                    updatePreview();
+                }
+            }, {passive: false});
+
+            window.addEventListener('touchend', () => { 
+                if(state.isDragging) saveHistoryState();
+                state.isDragging = false; 
+            });
+        }
+
+        function updatePreview() {
+            const bg = document.getElementById('preview-bg');
+            const img = document.getElementById('result-image');
+            const shape = state.selectedShape;
+            
+            // Apply Background
+            bg.style.background = '';
+            bg.style.boxShadow = 'none';
+            bg.style.border = 'none';
+
+            if(shape.val === 'transparent') { bg.classList.add('transparency-bg'); } 
+            else {
+                bg.classList.remove('transparency-bg');
+                bg.style.background = shape.val;
+                if(shape.bgCol) bg.style.backgroundColor = shape.bgCol;
+                if(shape.bgSize) bg.style.backgroundSize = shape.bgSize;
+                if(shape.border) { bg.style.border = shape.border; bg.style.boxSizing = 'border-box'; }
+                if(shape.shadow) bg.style.boxShadow = shape.shadow;
+            }
+            
+            // Apply Transforms & Drop Shadow (CSS Filter for preview)
+            const shadowStr = `drop-shadow(${state.shadow.x}px ${state.shadow.y}px ${state.shadow.blur}px ${state.shadow.color}${Math.floor(state.shadow.opacity*255).toString(16).padStart(2,'0')})`;
+            img.style.filter = shadowStr;
+            img.style.transform = `translate(${state.posX}px, ${state.posY}px) scale(${state.imgScale})`;
+        }
+
+        function autoCenter() {
+            state.posX = 0;
+            state.posY = 0;
+            state.imgScale = 1;
+            document.getElementById('img-scale').value = 1;
+            updatePreview();
+            saveHistoryState();
+        }
+
+        // --- Modals & Payments ---
+        function openGoldModal(type) {
+            const modal = document.getElementById('gold-modal');
+            const title = document.getElementById('modal-title');
+            const desc = document.getElementById('modal-desc');
+            const content = document.getElementById('modal-content');
+            
+            if(type === 'ultra') {
+                title.innerText = 'ULTRA 4K';
+                desc.innerText = state.lang === 'ar' ? 'اختر خطة الاشتراك للمتابعة' : 'Select a subscription plan';
+                state.selectedPlan = null;
+                content.innerHTML = `
+                    <div class="space-y-3">
+                        <div class="plan-option flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5 cursor-pointer hover:border-gold transition-all duration-300 relative overflow-hidden" onclick="selectPlan(this, 'monthly')">
+                            <span class="font-bold text-white z-10">${state.lang === 'ar' ? 'شهري' : 'Monthly'}</span>
+                            <span class="font-black text-gold z-10">199 EGP</span>
+                            <i class="fas fa-check-circle text-gold absolute left-4 opacity-0 check-icon transition-all duration-300"></i>
+                        </div>
+                        <div class="plan-option flex items-center justify-between p-4 rounded-xl border border-white/10 bg-white/5 cursor-pointer hover:border-gold transition-all duration-300 relative overflow-hidden" onclick="selectPlan(this, 'yearly')">
+                            <div class="absolute right-0 top-0 bg-gold text-black text-[9px] px-2 py-0.5 font-bold rounded-bl-lg z-20">SAVE 40%</div>
+                            <span class="font-bold text-white z-10">${state.lang === 'ar' ? 'سنوي' : 'Yearly'}</span>
+                            <span class="font-black text-gold z-10">799 EGP</span>
+                            <i class="fas fa-check-circle text-gold absolute left-4 opacity-0 check-icon transition-all duration-300"></i>
+                        </div>
+                    </div>
+                `;
+            } else {
+                title.innerText = 'UNLOCK DESIGN';
+                desc.innerText = state.lang === 'ar' ? 'افتح هذا التصميم الاحترافي.' : 'Unlock this professional design.';
+                let style = `background: ${state.pendingItem.val};`;
+                if(state.pendingItem.bgCol) style += ` background-color: ${state.pendingItem.bgCol};`;
+                content.innerHTML = `<div class="w-20 h-20 rounded-xl mx-auto shadow-2xl mb-4 relative overflow-hidden border border-white/10" style="${style}"></div>`;
+            }
+            modal.classList.remove('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); modal.children[0].classList.remove('scale-95'); modal.children[0].classList.add('scale-100'); }, 10);
+        }
+
+        function selectPlan(el, plan) {
+            document.querySelectorAll('.plan-option').forEach(d => d.classList.remove('selected'));
+            el.classList.add('selected');
+            state.selectedPlan = plan;
+        }
+
+        function handlePayment() {
+            if(state.pendingItem === 'ultra' && !state.selectedPlan) { alert(state.lang === 'ar' ? 'يرجى اختيار خطة' : 'Please select a plan'); return; }
+            window.open('https://ipn.eg/S/amr.othm/instapay/2eZyrm', '_blank');
+            setTimeout(() => {
+                if(state.pendingItem && state.pendingItem.id) {
+                    state.unlocked.push(state.pendingItem.id);
+                    localStorage.setItem('mora_v21_unlocked', JSON.stringify(state.unlocked));
+                    renderShapes();
+                    const idx = shapes.findIndex(s => s.id === state.pendingItem.id);
+                    if(document.getElementById('shapes-slider').children[idx]) handleShapeClick(state.pendingItem, document.getElementById('shapes-slider').children[idx]);
+                } else { alert('Ultra Unlocked!'); }
+                closeGoldModal();
+            }, 2000);
+        }
+
+        function closeGoldModal() {
+            const modal = document.getElementById('gold-modal');
+            modal.classList.add('opacity-0'); modal.children[0].classList.remove('scale-100'); modal.children[0].classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); state.pendingItem = null; }, 300);
+        }
+
+        // --- Link Modal ---
+        function openLinkModal() {
+            const modal = document.getElementById('link-modal');
+            modal.classList.remove('hidden');
+            document.getElementById('link-step-1').classList.remove('hidden');
+            document.getElementById('link-step-2').classList.add('hidden');
+            setTimeout(() => { modal.classList.remove('opacity-0'); modal.children[0].classList.remove('scale-95'); modal.children[0].classList.add('scale-100'); }, 10);
+        }
+        function closeLinkModal() {
+            const modal = document.getElementById('link-modal');
+            modal.classList.add('opacity-0'); modal.children[0].classList.remove('scale-100'); modal.children[0].classList.add('scale-95');
+            setTimeout(() => { modal.classList.add('hidden'); }, 300);
+        }
+        function generateLink() {
+            if(!state.currentUrl) { alert(state.lang === 'ar' ? 'يرجى رفع صورة أولاً' : 'Upload image first'); return; }
+            document.getElementById('link-step-1').classList.add('hidden');
+            document.getElementById('link-step-2').classList.remove('hidden');
+            document.getElementById('generated-link').value = `https://mora.app/share/png/${Math.random().toString(36).substring(7)}`;
+        }
+        function copyLink() {
+            const inp = document.getElementById('generated-link'); inp.select(); document.execCommand('copy');
+            showToast(translations[state.lang].copy); closeLinkModal();
+        }
+
+        // --- Events & Processing ---
+        function setupEvents() {
+            // Theme & Lang
+            document.getElementById('theme-btn').onclick = (e) => { e.stopPropagation(); document.getElementById('theme-menu').classList.toggle('hidden'); };
+            document.onclick = () => document.getElementById('theme-menu').classList.add('hidden');
+            document.getElementById('lang-toggle').onclick = () => {
+                state.lang = state.lang === 'ar' ? 'en' : 'ar';
+                document.documentElement.dir = state.lang === 'ar' ? 'rtl' : 'ltr';
+                document.getElementById('lang-text').innerText = state.lang.toUpperCase();
+                document.body.classList.toggle('en-font');
+                updateLang();
+                // Flip Shadow X logic visually for slider if needed, but logic remains Cartesian
+            };
+
+            // File
+            const drop = document.getElementById('drop-zone');
+            const inp = document.getElementById('file-input');
+            drop.onclick = () => inp.click();
+            inp.onchange = (e) => processImage(e.target.files[0]);
+
+            // Slider Scale
+            document.getElementById('img-scale').oninput = (e) => {
+                state.imgScale = e.target.value;
+                updatePreview();
+            };
+            document.getElementById('img-scale').onmouseup = saveHistoryState;
+            document.getElementById('img-scale').ontouchend = saveHistoryState;
+
+            // Shadow Controls
+            const updateShadow = () => {
+                state.shadow.blur = document.getElementById('shadow-blur').value;
+                state.shadow.opacity = document.getElementById('shadow-opacity').value;
+                state.shadow.x = document.getElementById('shadow-x').value;
+                state.shadow.y = document.getElementById('shadow-y').value;
+                updatePreview();
+            };
+            const shadowInputs = ['shadow-blur', 'shadow-opacity', 'shadow-x', 'shadow-y'];
+            shadowInputs.forEach(id => {
+                document.getElementById(id).addEventListener('input', updateShadow);
+                document.getElementById(id).addEventListener('mouseup', saveHistoryState);
+                document.getElementById(id).addEventListener('touchend', saveHistoryState);
+            });
+
+            // Compare Slider
+            const compareBtn = document.getElementById('toggle-compare');
+            const compareOverlay = document.getElementById('compare-overlay');
+            const compareWrapper = document.getElementById('compare-slider-wrapper');
+            const compareHandle = document.getElementById('compare-handle');
+            let isComparing = false;
+
+            compareBtn.onclick = () => {
+                if(!isComparing) {
+                    compareOverlay.classList.remove('hidden');
+                    compareBtn.classList.add('bg-gold', 'text-black');
+                    // Reset slider position
+                    compareWrapper.style.width = '50%';
+                    compareHandle.style.left = '50%';
+                } else {
+                    compareOverlay.classList.add('hidden');
+                    compareBtn.classList.remove('bg-gold', 'text-black');
+                }
+                isComparing = !isComparing;
+            };
+
+            // Compare Drag Logic
+            let draggingCompare = false;
+            compareHandle.addEventListener('mousedown', () => draggingCompare = true);
+            window.addEventListener('mouseup', () => draggingCompare = false);
+            window.addEventListener('mousemove', (e) => {
+                if(!draggingCompare) return;
+                const rect = compareOverlay.getBoundingClientRect();
+                let x = e.clientX - rect.left;
+                let percent = (x / rect.width) * 100;
+                percent = Math.min(Math.max(percent, 0), 100);
+                compareWrapper.style.width = percent + '%';
+                compareHandle.style.left = percent + '%';
+            });
+            // Touch Compare
+            compareHandle.addEventListener('touchstart', () => draggingCompare = true);
+            window.addEventListener('touchend', () => draggingCompare = false);
+            window.addEventListener('touchmove', (e) => {
+                if(!draggingCompare) return;
+                const rect = compareOverlay.getBoundingClientRect();
+                let x = e.touches[0].clientX - rect.left;
+                let percent = (x / rect.width) * 100;
+                percent = Math.min(Math.max(percent, 0), 100);
+                compareWrapper.style.width = percent + '%';
+                compareHandle.style.left = percent + '%';
+            });
+
+            // Other Buttons
+            document.getElementById('btn-ultra-trigger').onclick = () => { state.pendingItem = 'ultra'; openGoldModal('ultra'); };
+            document.getElementById('btn-generate-link').onclick = openLinkModal;
+            document.getElementById('btn-link-no').onclick = closeLinkModal;
+            document.getElementById('btn-link-yes').onclick = generateLink;
+            document.getElementById('btn-copy-link').onclick = copyLink;
+            document.getElementById('close-link-modal').onclick = closeLinkModal;
+            document.getElementById('close-modal').onclick = closeGoldModal;
+            document.getElementById('pay-btn').onclick = handlePayment;
+            document.getElementById('btn-close-result').onclick = resetUI;
+            document.getElementById('btn-download').onclick = downloadImage;
+
+            document.querySelectorAll('.sample-img').forEach(img => {
+                img.onclick = async () => {
+                    const r = await fetch(img.src);
+                    processImage(new File([await r.blob()], "sample.jpg", {type:"image/jpeg"}));
+                };
+            });
+        }
+
+        function updateLang() {
+            const t = translations[state.lang];
+            document.querySelectorAll('[data-key]').forEach(el => {
+                const key = el.getAttribute('data-key');
+                if(t[key]) el.innerText = t[key];
+            });
+            document.getElementById('pay-text').innerText = t.payNow;
+            document.getElementById('toast-text').innerText = t.toastSaved;
+        }
+
+        function switchTab(tab) {
+            document.querySelectorAll('.tab-btn').forEach(b => {
+                b.classList.remove('active', 'text-primary', 'border-b-2', 'border-primary');
+                b.classList.add('text-gray-400');
+            });
+            document.querySelector(`[data-tab="${tab}"]`).classList.add('active', 'text-primary', 'border-b-2', 'border-primary');
+            document.querySelector(`[data-tab="${tab}"]`).classList.remove('text-gray-400');
+            
+            document.querySelectorAll('.tool-content').forEach(c => c.classList.add('hidden'));
+            document.getElementById(`tab-${tab}`).classList.remove('hidden');
+        }
+
+        function setShadowColor(c) {
+            state.shadow.color = c;
+            updatePreview();
+            saveHistoryState();
+        }
+
+        function setFormat(fmt) {
+            state.format = fmt;
+            document.getElementById('fmt-png').classList.toggle('bg-primary', fmt === 'png');
+            document.getElementById('fmt-png').classList.toggle('text-white', fmt === 'png');
+            document.getElementById('fmt-png').classList.toggle('text-gray-400', fmt !== 'png');
+            
+            document.getElementById('fmt-jpg').classList.toggle('bg-primary', fmt === 'jpg');
+            document.getElementById('fmt-jpg').classList.toggle('text-white', fmt === 'jpg');
+            document.getElementById('fmt-jpg').classList.toggle('text-gray-400', fmt !== 'jpg');
+        }
+
+        async function processImage(file) {
+            if(!file) return;
+            // Set Original URL for comparison
+            state.originalUrl = URL.createObjectURL(file);
+            document.getElementById('original-image-preview').src = state.originalUrl;
+
+            document.getElementById('upload-ui').classList.add('hidden');
+            document.getElementById('processing-ui').classList.remove('hidden');
+            
+            const form = new FormData(); 
+            form.append('image_file', file); 
+            form.append('size', 'auto');
+            
+            try {
+                const res = await fetch('https://api.remove.bg/v1.0/removebg', { method: 'POST', headers: {'X-Api-Key': API_KEY}, body: form });
+                if(!res.ok) throw new Error('Error');
+                const blob = await res.blob();
+                state.currentUrl = URL.createObjectURL(blob);
+                document.getElementById('result-image').src = state.currentUrl;
+                document.getElementById('upload-section').classList.add('hidden');
+                document.getElementById('samples-section').classList.add('hidden');
+                document.getElementById('result-section').classList.remove('hidden');
+                
+                // Reset State
+                state.posX = 0; state.posY = 0; state.imgScale = 1;
+                state.history = []; state.historyIndex = -1;
+                
+                updatePreview();
+                saveHistoryState(); // Initial State
+                addToGallery(state.currentUrl);
+            } catch(e) { 
+                alert(state.lang === 'ar' ? 'فشل المعالجة أو نفد الرصيد' : 'Processing failed or no credits'); 
+                resetUI(); 
+            }
+        }
+
+        function resetUI() {
+            document.getElementById('processing-ui').classList.add('hidden');
+            document.getElementById('upload-ui').classList.remove('hidden');
+            document.getElementById('result-section').classList.add('hidden');
+            document.getElementById('upload-section').classList.remove('hidden');
+            document.getElementById('samples-section').classList.remove('hidden');
+            document.getElementById('file-input').value = '';
+            state.imgScale = 1;
+            document.getElementById('img-scale').value = 1;
+        }
+
+        function addToGallery(url) {
+            const grid = document.getElementById('saved-grid');
+            document.getElementById('saved-section').classList.remove('hidden');
+            const div = document.createElement('div');
+            div.className = 'aspect-square rounded-lg bg-gray-800 border border-gray-700 p-1 cursor-pointer hover:border-primary transition';
+            div.innerHTML = `<img src="${url}" class="w-full h-full object-contain">`;
+            div.onclick = () => { 
+                 document.getElementById('result-image').src = url;
+                 state.currentUrl = url;
+                 // Note: we lose history for old gallery items in this simple implementation
+                 document.getElementById('result-section').classList.remove('hidden');
+                 document.getElementById('upload-section').classList.add('hidden');
+            };
+            grid.prepend(div);
+        }
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            document.getElementById('toast-text').innerText = msg;
+            t.className = 'toast show';
+            setTimeout(() => t.className = t.className.replace('show', ''), 3000);
+        }
+
+        function downloadImage() {
+            if(!state.currentUrl) return;
+            const cvs = document.getElementById('process-canvas');
+            const ctx = cvs.getContext('2d');
+            const img = new Image();
+            img.crossOrigin = "anonymous";
+            img.src = state.currentUrl;
+            
+            img.onload = () => {
+                cvs.width = img.naturalWidth;
+                cvs.height = img.naturalHeight;
+                const w = cvs.width, h = cvs.height;
+                const s = state.selectedShape;
+
+                // 1. Draw Background
+                if(s.val !== 'transparent') {
+                    if(s.val.includes('gradient')) {
+                        const grd = ctx.createLinearGradient(0,0,w,h);
+                        // Simplified gradient parsing for canvas is complex. 
+                        // Fallback: draw a solid color or simple gradient approximation.
+                        // For this demo, we use a solid fill if simple, else standard white fallback for complex CSS gradients not easily parsed to Canvas API without a library.
+                        // However, we can use a temporary 2D fill.
+                        ctx.fillStyle = s.bgCol || '#ffffff'; 
+                    } else { 
+                        ctx.fillStyle = s.val; 
+                    }
+                    ctx.fillRect(0,0,w,h);
+                    
+                    if(s.border) {
+                        const bW = parseInt(s.border)||20; ctx.lineWidth = bW*2;
+                        ctx.strokeStyle = s.border.split(' ').pop(); ctx.strokeRect(0,0,w,h);
+                    }
+                } else if (state.format === 'jpg') {
+                    // JPG doesn't support transparency, force white
+                    ctx.fillStyle = '#ffffff';
+                    ctx.fillRect(0,0,w,h);
+                }
+
+                // 2. Calculate Transforms
+                const container = document.getElementById('preview-container');
+                // Ratio between real image size and screen display size
+                // We use object-contain logic: the image fits within container.
+                // But for high-res export, we apply scale relative to the image itself.
+                
+                const scale = parseFloat(state.imgScale);
+                const sW = w * scale;
+                const sH = h * scale;
+                // Center + Offset
+                // Offset in state is screen pixels. We need to scale offset to image resolution.
+                // Approximation: display height is 400px.
+                const screenRatio = h / 400; // Multiplier
+                const mX = state.posX * screenRatio; 
+                const mY = state.posY * screenRatio;
+                const cX = (w - sW) / 2 + mX;
+                const cY = (h - sH) / 2 + mY;
+
+                // 3. Draw Shadow
+                if(state.shadow.opacity > 0) {
+                    ctx.save();
+                    ctx.shadowBlur = state.shadow.blur * 2; // Scale blur up a bit for high res
+                    ctx.shadowColor = state.shadow.color + Math.floor(state.shadow.opacity*255).toString(16).padStart(2,'0');
+                    ctx.shadowOffsetX = state.shadow.x * screenRatio;
+                    ctx.shadowOffsetY = state.shadow.y * screenRatio;
+                    // Draw image for shadow only
+                    ctx.drawImage(img, cX, cY, sW, sH);
+                    ctx.restore(); // Restore context to stop shadowing everything else (if any)
+                }
+
+                // 4. Draw Image (On top of shadow)
+                // If shadow opacity is high, we might want to prevent double drawing if context shadow handles it. 
+                // However, standard technique is drawing again to ensure clean edges over the shadow bloom.
+                ctx.drawImage(img, cX, cY, sW, sH);
+
+                // 5. Export
+                const mime = state.format === 'png' ? 'image/png' : 'image/jpeg';
+                const dlLink = document.createElement('a');
+                dlLink.href = cvs.toDataURL(mime, 0.9);
+                dlLink.download = `Mora_${Date.now()}.${state.format}`;
+                document.body.appendChild(dlLink);
+                dlLink.click();
+                document.body.removeChild(dlLink);
+                
+                showToast(translations[state.lang].toastSaved);
+            };
+        }
+
+        // --- Theme Setter ---
+        function setTheme(mode) {
+            const body = document.getElementById('main-body');
+            body.className = body.className.replace(/theme-\w+/, `theme-${mode}`);
+            const map = {
+                'dark': {bg:'#020617', txt:'#fff'}, 'midnight': {bg:'#0f172a', txt:'#e2e8f0'}, 'light': {bg:'#f8fafc', txt:'#1e293b'}
+            };
+            if(map[mode]) {
+                body.style.backgroundColor = map[mode].bg; body.style.color = map[mode].txt;
+            }
+            document.getElementById('theme-menu').classList.add('hidden');
+        }
+    </script>
 </body>
 </html>
+
+.........
+
+
+احتفظ بكل حاجه بس خلي الخلفبات اللي في قسم الخلفيات متبقاش شبه بعضها 
+
+وتبقي مختلفه وكتير
+
+والخلفيه المدفوعه لما المستخدم يضغط علبها يظهر السعر فوق ادفع 1$
+
+ ولما المستخدم يعمل الصوره وتتشال الخلفيه يلاقي جمله مكتوبه لازاله العلامه المائيه اضغط عليها وشاهد اعلان لازالتها ولما يضغط الاعلان يشتغل حقيقي 12ثانيه وبعدها تختفي والرساله دي بتظهر 
+
+يبقب في سهم بشاور بشكل احترافي ع العلامه المائيه فاهم والعلامه المائيه تبقي محطوطه بشمل احترافي والتصميم حلو واحتفظ بالحاجات التانيه كلها وابعت الكود كامل ومنظم وشغال بدون اخطاء ومتغيرش حاجه ومتشلش حاجه مطلبتهاش فاهم     
+
+احتفظ بكل حاجه بس متخليش الوان الخلفيات متكرره فاهم
+
+وخلي لما يختار ال4k
+
+يظهر له Premium  انو يشترك ويبقي فيه باقتين 
+
+شهر والسعر 199
+
+والسنه 899 
+
+ويبقي فيه خصم عليها من فوق و ةسيله الدفع تبقي نفس وسيله الخلفبات فاهم اعمل المطلوب واحتفظ بالحاجات التانيه كلها وابعت الكود كامل ومنظم وشغال بدون اخطاء ومتغيرش حاجه ومتشلش حاجه مطلبتهاش فاهم وخلي الالوان اللي في الثيمات شغلله كلها وتغير الغه شغاله وكل حاجه شغاله وكل الازرار شغاله
+
+خلي جمله free تبقي مكتةبه باللون الدهبي المائي واحترافي وتبقي فوق كلمه𝑴𝒐𝒓𝒂  
+
+زخلي لما يجي يختار 4k يتفتح معاه الصفحه وغبها ايعار الباقات وهو يختار ويعمل فاهم وكل حاجه احترافي وتصميم الموقع احترافي 
+
+وضيف 4حاجات كمان شغاله ورجع وسايل التواصل جميع الحقوق مخفوظه 𝑴𝒐𝒓𝒂 𝑹𝒆𝒎𝒐𝒗𝒆2026
+
+ورجع وسايل التواصل جمبهم بالصور بتاعتهم وكل حاجه احترافي وحط مفتاح api ده مكان التاني
+
+gjcgrTc75CrMrKNRpS4WHHxc
+
+... 
+
+وكل حاجه نت حاطتها خلبها شغاله بجد وحقيقي ونبي وتبقي مربوطه ب فاير بيز
+
+وخلي في اشترك في بريميم الي نت عاملها وجمبها سهم خليها شغاله واىبطها بقاعده بيانات 
+
+بمعني
+
+دلوقتي لما شخص يضغط ع السهم يظهر سعر الباقه زي تصميم واجهه 4k والسعر
+
+1199 مدي الحياه 
+
+دي اللي في صفحه المستخدم 
+
+واربط طلبات الدفع بحساب الانستا باي بتاعي وكل حاجه تبقي شغاله بجد ومربوطه ب قاعده البيانات والفلوس اللي توصل تظهر
+
+وفي لوحه التحكم في فتح Premium 
+
+لما اضغط عليه يكون ظاهرلي كل حاجه ولو الخلفبات ب الوانهم وجمب كل حاجه زر تفيل وايقاف وكل حاجه شغاله ب قاعده البيانات حقيقي
+بص بقا وركز معايا عشان زهقت وكل الحاجات اللي هقولها اربطها ب قاعده البيانات فاهم
+
+دلو في صفحه المستخدم 
+
+الشريط اللي فوف مميزات الموقع
+
+اللي مكتوب عليه احصل على pro 
+
+خليه يبقي شغال والشخص لما يجي يضغط ع السهم يظهّر له  
+
+سعر الاشتراك 1299 وتبقي نفس تصميم واجهه ال 4k
+
+وفي ال4k يبقي اشتراك شهري 119
+
+واشتراك سنوي799 
+
+فاهم وكل حاجه مربوطة ب قاعده البيانات 
+
+وفي لوحه التحكم 
+
+ لما المستخدم يدفع  يدفع حقيقي في انستا باي ويجلي رساله انو دفع والرساله فيها المبلع واي اللي دفعو فاهم 
+
+ولعدين افتح الميزه له وكل حاجه شغاله بنظام واحترافيه وحقيقي وكل حاجه تحصى تبقي بجدوفي وقتها وكل حاجه مربوطة ب قاعده البيانات مع الاحتفاظ بالحاجات التانيه كلها
+
+يعم ونبي افهم عاوز لما واحد يشترك ويدفع
+
+والحساب يتفعل يظهر جمب الملف الشخصي فوق كلمه برو ولما الادمن يفعلو 
+
+السهم اللي هو 1299 دن يختفي من البرنامج
+
+واي عليه دفع تبقي مربوطه ب قاعده البيانات 
+
+ولما يجي يدفع لاختيار خلفيه
+
+مش يدفع علطول لا تبقي نفس حوار السهم ال 1299 وكل حاجه حقيقي 
+
+ولما يدفع في ااخلفيات ل حاجه وتوصل الادمن ويفعلها كلمه pro تتشال من عليها فاهم وكل حاجه احترافي ومميزه
+
+الله ينور عليك بص بقا لو مستخدم اختار الباقه الشهريه وطبعا اجراءتها ختبقي نفس الباقي لما تافعل ويتكتب جمبو برو بما يضغط ع برو يظهر له الوقت اللي هتنتهي فيه يعني مثلا كانت يوم 1/1 /2025
+
+تنتهي 1/2/2025 مثلا فاهم
+
+وهكءا لو اختار سنه او شهر وكل حاجه مربوطة ب قاعده البيانات وشغال حقيقي وبجد
+
+وفي لوحه التحكم للمستخدين يبقي مكتوب كلمه السر اللي سجلو بيها وظاهره وضيف قسم اسمو النشاط وكل مستخدم موجود داخل الموقع يبقي جمبو نشط نقطه خضرا وكل حاجه شغاله بجد وحقيقي ب قاعده البيانات مش وهمي فاهم تبقي مربوطه ب قاعده البيانات حقيقي
+
+اعمل المطلوب بالحرف وركز
+
+لما يضغط ع اي حاجه يبقي في حرف x للخروج منها ويبقي باين
+
+وفي ادفع عبر انيتا باي حسابي. ميكونتش ظاهر لا يبقي رابط فاهم 
+
+ويبقي في لوحه التحكم يبقي
+
+في قيم في المستخدمين ايمو كلمه المرور ويبقي موجود فيه كلمات المرور اللي مستخدم كتبها وتبقي كل حاجه حقيقي ومنظم ومىربوط بقاعده بيانات 
+
+ولو حد خد حظر حساب الحساب يتحظر بجد وحقيقي ولو خد حظر حساب ip
+
+ميعرفش يسجل تاني
+
+ولما المستخدم يجي يفتح الموقع اول مره 
+
+ميبقاش مكتوب ع رفع الملفات انشاء حساب لا..  تبقي مش موجوده ولكن لما يختار الصوره تظهر له انو لازم يعمى حساب ويظهر بشكل احترافي ومميز  فاهم وكل حاجه شغاله بجد وحقيقي ومربوطه ب قاعده البيانات 
+
+وكل حاجه احترافي ومنظمه وشغال ومربطو بقاعده البيانات 
+
+ولملا يختار اي خلفيه عشان يدفع لون الخلفيه يظهر بجد في مربع الدفع وكل حاجه حقيقي ومنظم
+
+بص وركز 
+
+خلي الثيمات اللي اعلي شاشه المستخدم تبقي الالوان اللي فيها كلها شغاله فاهم وكل حاجه حقيقي ومنظم 
+
+ولما شخص يضغط علي ملف الشخصي يظهر له الاسم بتاعو كلمه المرور وتبقي مشفره ومكتوب جمبها 
+
+ويبقي مكتوب الخطه اللي هو علبها ويبقي الصوره يبقي تحتها 6افاتارات وهو يختار واللي يختاره يتحط ويقدر يختار من المعرض عندو 
+
+وكل حاجه احترافيه وحقيقي ومربوطه ب قاعده البيانات حقيقي
+
+وقولتلك في صفحه المستخدم لما يفتح ميلقيش كلمه انشاء حساب مكتوبه لا.. تظهر بعد مايختار ملف عشان يشيل الخلفيه ولازم يسجل الاول 
+
+وبص بقا 
+
+لما يسجل والموقع يفتح
+
+يظهر له اسعار الخطط 
+
+الشهر يبقي 299
+
+السنه 799
+
+مدي الحياه وعدل مدي الحياه بدل 1299...  تبقي 2199.. تمام 
+
+ويبقي تحتهم خطه Free 
+
+المستخدم يضغط علبها ويضغط 
+
+يضغط التالي او Next  
+
+ويبقي في الخطه المجانين بيحصل علي 150 credits
+
+وكل صوره يعملها يتخصم
+
+4 credit 
+
+فاهم ولما يخلص ال credis مينفعش يستخدم الموقع غير لما يشترك والخطط تظهر بشكل احترافي وكل حاجه احترافي ومربوطه بقاعده البيانات حقيقي فاهم
+
+الله ينور عليك الله ينور عليك 
+
+احتفظ بكل حاجه بقا بس خلي الافاتارات اللي في الملف الشخصي نبقي زي اشخاض زي واتساب 
+
+وشيل البريد الإلكتروني من الملف الشخصي 
+
+ويبقي التصميم من الخيال
+
+ولما افتح اي حاجه يبقث زر الرجوع اضح كله فاهم وكل حاجه احترافيه ومنظمه
+
+وبالنسبه لمفتاح api  لازاله الخلفيه اعملي واحد خاص بيا حقيقي ومربوطه بقاعده البيانات وشغال وحطو مكان التاني بخيث لما ابعت اي الصوره الخلفيه تتسال بجد والجوده تبقي عاليه فاهم
+
+ولما المستخدم يضغط علي اسمو اسم الخطه ميبقاش داخل الملف الشخصي لا يبقي تحت الاسم ومكتوبه بالآخضر  او علي حسب الخطه
+
+ولملا اسعار الباقات تفتح الخيار ميكونتش علي حاجه هو اللي يختار
+
+والتطبيق يبقي مناسب لكل شاشات الهواتف ومنظم و واضح
+
+وكل حاجه شغاله بجد وحقيقي ومربوطه ب قاعده البيانات
+
+وفي لوحه التحكم في الاشتركات جمب كل اشتراك مدفوع زر حذف وزر اخفاء وكل حاجه شغاله بجد وحقيقي ومربوطه ب قاعده البيانات
+
+الله ينور عليك بص بقا الحاجات
+الشريط اللي فوق مميزات التطببق اللي فيه عمليات التنزيل الكلام ده كله عاوزه يبقي بجد وحقيقي ومربوطه ب قاعده البيانات 
+وفي نفس الوقت يبقي ليهم قسم في لوحه التحكم ومكتوب فيه الحاجات واقدر اتحكم في الحاجات اللي بتظهر اقدر ازود وانقص براحتي وفي نفس الوقت مربوطة ب قاعده البيانات 
+وفي مميزات التطببق 
+تحت خلفيات متنوعه متكتبش العدد
+وفي استخدام كحاني اكتب مكانها حاجه احترافي من نظرك للموقع لانو بقا مدفوع ومجاني
+... 
+وشكرا لدعمك تبقي الاول تقيم زي ماكنت عامل ولما يقيم تظهر رساله شكر ب لسمه والتقييم والكلمه يختفو نهائي
+وفي انضم لمجتمنا
+تواصل كعنا لملا يضغط عليه يظهر الفيسبوك https://www.facebook.com/share/1Avq9NFzVd/
+والايميل amrloutfy2006@gmail.com
+وكل وسيله ب ايقونتها الحقيقي وشغال وشارك الموقع اعملو رابط حقيقي نفس رابط الموقع فاهك وكل حاجه احترافي ومربوطه ب قاعده البيانات. 
+وعاوز الاعلانات اللي تظهر علي ازاله العلامه المائيه تبقي متنوعه مش متشابه بعني اللي يظهر لشخص ميظهرش لنفس الشخص والاعلان يبقي شغال بجد وخلي شريط الثيمات شغال
+
+
+
+
+
+
+
